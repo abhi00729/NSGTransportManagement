@@ -1,0 +1,2801 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NSGTransportManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CoreBus">
+          <Key>
+            <PropertyRef Name="BusID" />
+          </Key>
+          <Property Name="BusID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegistrationNumber" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="TotalSeatCount" Type="int" Nullable="false" />
+          <Property Name="MaxPassengerAllowed" Type="int" Nullable="false" />
+          <Property Name="KilometerRun" Type="int" Nullable="false" />
+          <Property Name="DriverName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DriverContactNumber" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CoDriverName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CoDriverContactNumber" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="BusRouteID" Type="bigint" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="EntryUserID" Type="int" Nullable="false" />
+          <Property Name="EntryDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUserID" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CoreBusRoute">
+          <Key>
+            <PropertyRef Name="BusRouteID" />
+          </Key>
+          <Property Name="BusRouteID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RouteNo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="EntryUserID" Type="int" Nullable="false" />
+          <Property Name="EntryDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUserID" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CoreBusRouteDetail">
+          <Key>
+            <PropertyRef Name="BusRouteDetailID" />
+          </Key>
+          <Property Name="BusRouteDetailID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BusRouteID" Type="bigint" Nullable="false" />
+          <Property Name="BusStopNumber" Type="int" Nullable="false" />
+          <Property Name="BusStopName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="PickUpTime" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="DropTime" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="EntryUserID" Type="int" Nullable="false" />
+          <Property Name="EntryDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUserID" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CoreBusRouteSchool">
+          <Key>
+            <PropertyRef Name="BusRouteSchoolID" />
+          </Key>
+          <Property Name="BusRouteSchoolID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BusRouteID" Type="bigint" Nullable="false" />
+          <Property Name="SchoolID" Type="bigint" Nullable="false" />
+          <Property Name="EntryUserID" Type="int" Nullable="false" />
+          <Property Name="EntryDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUserID" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CoreCity">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateID" Type="int" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="EntryUserID" Type="int" Nullable="false" />
+          <Property Name="EntryDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUserID" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CoreIdentityType">
+          <Key>
+            <PropertyRef Name="IdentityTypeID" />
+          </Key>
+          <Property Name="IdentityTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdentityType" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="EntryUserID" Type="int" Nullable="false" />
+          <Property Name="EntryDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUserID" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CoreQuarterType">
+          <Key>
+            <PropertyRef Name="QuarterTypeID" />
+          </Key>
+          <Property Name="QuarterTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuarterTypeName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="MaxQuarterNumber" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="EntryUserID" Type="int" Nullable="false" />
+          <Property Name="EntryDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUserID" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CoreRank">
+          <Key>
+            <PropertyRef Name="RankID" />
+          </Key>
+          <Property Name="RankID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RankName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="EntryUserID" Type="int" Nullable="false" />
+          <Property Name="EntryDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUserID" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CoreRelationship">
+          <Key>
+            <PropertyRef Name="RelationshipID" />
+          </Key>
+          <Property Name="RelationshipID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Relationship" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EntryUserID" Type="int" Nullable="false" />
+          <Property Name="EntryDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUserID" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CoreSchool">
+          <Key>
+            <PropertyRef Name="SchoolID" />
+          </Key>
+          <Property Name="SchoolID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SchoolName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="WinterTimingStart" Type="date" Nullable="false" />
+          <Property Name="WinterTimingEnd" Type="date" Nullable="false" />
+          <Property Name="WinterTimingFrom" Type="time" Precision="7" Nullable="false" />
+          <Property Name="WinterTimingTo" Type="time" Precision="7" Nullable="false" />
+          <Property Name="SummerTimingStart" Type="date" Nullable="false" />
+          <Property Name="SummerTimingEnd" Type="date" Nullable="false" />
+          <Property Name="SummerTimingFrom" Type="time" Precision="7" Nullable="false" />
+          <Property Name="SummerTimingTo" Type="time" Precision="7" Nullable="false" />
+          <Property Name="DistanceFromGarage" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SchoolAddress" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="AdminContactNumbers" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="StateID" Type="int" Nullable="false" />
+          <Property Name="CityID" Type="bigint" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="EntryUserID" Type="int" Nullable="false" />
+          <Property Name="EntryDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUserID" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CoreState">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="EntryUserID" Type="int" Nullable="false" />
+          <Property Name="EntryDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUserID" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CoreUnit">
+          <Key>
+            <PropertyRef Name="UnitID" />
+          </Key>
+          <Property Name="UnitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UnitName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="EntryUserID" Type="int" Nullable="false" />
+          <Property Name="EntryDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUserID" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CoreUser">
+          <Key>
+            <PropertyRef Name="CoreUserID" />
+          </Key>
+          <Property Name="CoreUserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserPassword" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EmployeeID" Type="varchar" MaxLength="100" />
+          <Property Name="FirstName" Type="varchar" MaxLength="250" />
+          <Property Name="LastName" Type="varchar" MaxLength="250" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="EntryUserID" Type="int" Nullable="false" />
+          <Property Name="EntryDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUserID" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="ErrorLogID" />
+          </Key>
+          <Property Name="ErrorLogID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SPName" Type="varchar" MaxLength="500" />
+          <Property Name="ErrorNumber" Type="int" />
+          <Property Name="ErrorSeverity" Type="int" />
+          <Property Name="ErrorState" Type="int" />
+          <Property Name="ErrorMessage" Type="nvarchar" MaxLength="4000" />
+          <Property Name="ErrorTime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="NSGEmployee">
+          <Key>
+            <PropertyRef Name="NSGEmployeeID" />
+          </Key>
+          <Property Name="NSGEmployeeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NSGEmployeeCode" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="250" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="RankID" Type="int" />
+          <Property Name="UnitID" Type="int" />
+          <Property Name="QuarterTypeID" Type="int" />
+          <Property Name="QuarterNumber" Type="int" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="EntryUserID" Type="int" Nullable="false" />
+          <Property Name="EntryDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUserID" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="NSGStudent">
+          <Key>
+            <PropertyRef Name="NSGStudentID" />
+          </Key>
+          <Property Name="NSGStudentID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="250" />
+          <Property Name="Gender" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="BirthDate" Type="datetime" Nullable="false" />
+          <Property Name="Class" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SchoolID" Type="bigint" Nullable="false" />
+          <Property Name="BusRouteID" Type="bigint" Nullable="false" />
+          <Property Name="BusRouteDetailID" Type="bigint" Nullable="false" />
+          <Property Name="GuardianName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="RelationshipID" Type="int" Nullable="false" />
+          <Property Name="NSGEmployeeCode" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="RankID" Type="int" />
+          <Property Name="UnitID" Type="int" />
+          <Property Name="QuarterTypeID" Type="int" />
+          <Property Name="QuarterNumber" Type="int" />
+          <Property Name="IssueDate" Type="datetime" Nullable="false" />
+          <Property Name="ExpiryDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="PassHolderPhoto" Type="image" />
+          <Property Name="EntryUserID" Type="int" Nullable="false" />
+          <Property Name="EntryDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUserID" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="NSGStudentDocument">
+          <Key>
+            <PropertyRef Name="NSGStudentDocumentID" />
+          </Key>
+          <Property Name="NSGStudentDocumentID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NSGStudentID" Type="bigint" Nullable="false" />
+          <Property Name="DocumentName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DocumentPhoto" Type="image" />
+          <Property Name="EntryUserID" Type="int" Nullable="false" />
+          <Property Name="EntryDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateUserID" Type="int" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'NSGTransportManagement.dbo.StudentPassDetailView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="StudentPassDetailView">
+          <Key>
+            <PropertyRef Name="PassId" />
+            <PropertyRef Name="RegNo" />
+            <PropertyRef Name="RouteNo" />
+            <PropertyRef Name="GuardianName" />
+            <PropertyRef Name="UnitName" />
+            <PropertyRef Name="Class" />
+            <PropertyRef Name="SchoolName" />
+            <PropertyRef Name="BusStopName" />
+            <PropertyRef Name="IssueDate" />
+            <PropertyRef Name="MobileNo" />
+          </Key>
+          <Property Name="PassId" Type="bigint" Nullable="false" />
+          <Property Name="Term" Type="varchar" MaxLength="33" />
+          <Property Name="RegNo" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="RouteNo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="501" />
+          <Property Name="GuardianName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="UnitName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Class" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Age" Type="int" />
+          <Property Name="SchoolName" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="BusStopName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="IssueDate" Type="datetime" Nullable="false" />
+          <Property Name="ExpiryDate" Type="datetime" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="PassHolderPhoto" Type="image" />
+        </EntityType>
+        <Association Name="FK_CoreBus_BusRouteID_CoreBusRoute_BusRouteID">
+          <End Role="CoreBusRoute" Type="Self.CoreBusRoute" Multiplicity="1" />
+          <End Role="CoreBus" Type="Self.CoreBus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreBusRoute">
+              <PropertyRef Name="BusRouteID" />
+            </Principal>
+            <Dependent Role="CoreBus">
+              <PropertyRef Name="BusRouteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreBus_EntryUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="1" />
+          <End Role="CoreBus" Type="Self.CoreBus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreBus">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreBus_UpdateUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="0..1" />
+          <End Role="CoreBus" Type="Self.CoreBus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreBus">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreBusRoute_EntryUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="1" />
+          <End Role="CoreBusRoute" Type="Self.CoreBusRoute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreBusRoute">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreBusRoute_UpdateUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="0..1" />
+          <End Role="CoreBusRoute" Type="Self.CoreBusRoute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreBusRoute">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreBusRouteDetail_BusRouteID_CoreBusRoute_BusRouteID">
+          <End Role="CoreBusRoute" Type="Self.CoreBusRoute" Multiplicity="1" />
+          <End Role="CoreBusRouteDetail" Type="Self.CoreBusRouteDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreBusRoute">
+              <PropertyRef Name="BusRouteID" />
+            </Principal>
+            <Dependent Role="CoreBusRouteDetail">
+              <PropertyRef Name="BusRouteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreBusRouteDetail_EntryUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="1" />
+          <End Role="CoreBusRouteDetail" Type="Self.CoreBusRouteDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreBusRouteDetail">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreBusRouteDetail_UpdateUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="0..1" />
+          <End Role="CoreBusRouteDetail" Type="Self.CoreBusRouteDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreBusRouteDetail">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreBusRouteSchool_BusRouteID_CoreBusRoute_BusRouteID">
+          <End Role="CoreBusRoute" Type="Self.CoreBusRoute" Multiplicity="1" />
+          <End Role="CoreBusRouteSchool" Type="Self.CoreBusRouteSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreBusRoute">
+              <PropertyRef Name="BusRouteID" />
+            </Principal>
+            <Dependent Role="CoreBusRouteSchool">
+              <PropertyRef Name="BusRouteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreBusRouteSchool_EntryUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="1" />
+          <End Role="CoreBusRouteSchool" Type="Self.CoreBusRouteSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreBusRouteSchool">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreBusRouteSchool_SchoolID_CoreSchool_SchoolID">
+          <End Role="CoreSchool" Type="Self.CoreSchool" Multiplicity="1" />
+          <End Role="CoreBusRouteSchool" Type="Self.CoreBusRouteSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreSchool">
+              <PropertyRef Name="SchoolID" />
+            </Principal>
+            <Dependent Role="CoreBusRouteSchool">
+              <PropertyRef Name="SchoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreBusRouteSchool_UpdateUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="0..1" />
+          <End Role="CoreBusRouteSchool" Type="Self.CoreBusRouteSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreBusRouteSchool">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreCity_EntryUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="1" />
+          <End Role="CoreCity" Type="Self.CoreCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreCity">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreCity_StateID_CoreState_StateID">
+          <End Role="CoreState" Type="Self.CoreState" Multiplicity="1" />
+          <End Role="CoreCity" Type="Self.CoreCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreState">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="CoreCity">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreCity_UpdateUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="0..1" />
+          <End Role="CoreCity" Type="Self.CoreCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreCity">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreQuarterType_EntryUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="1" />
+          <End Role="CoreQuarterType" Type="Self.CoreQuarterType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreQuarterType">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreQuarterType_UpdateUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="0..1" />
+          <End Role="CoreQuarterType" Type="Self.CoreQuarterType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreQuarterType">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreRank_EntryUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="1" />
+          <End Role="CoreRank" Type="Self.CoreRank" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreRank">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreRank_UpdateUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="0..1" />
+          <End Role="CoreRank" Type="Self.CoreRank" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreRank">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreRelationship_EntryUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="1" />
+          <End Role="CoreRelationship" Type="Self.CoreRelationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreRelationship">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreRelationship_UpdateUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="0..1" />
+          <End Role="CoreRelationship" Type="Self.CoreRelationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreRelationship">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreSchool_CityID_CoreCity_CityID">
+          <End Role="CoreCity" Type="Self.CoreCity" Multiplicity="1" />
+          <End Role="CoreSchool" Type="Self.CoreSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreCity">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="CoreSchool">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreSchool_EntryUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="1" />
+          <End Role="CoreSchool" Type="Self.CoreSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreSchool">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreSchool_StateID_CoreState_StateID">
+          <End Role="CoreState" Type="Self.CoreState" Multiplicity="1" />
+          <End Role="CoreSchool" Type="Self.CoreSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreState">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="CoreSchool">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreSchool_UpdateUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="0..1" />
+          <End Role="CoreSchool" Type="Self.CoreSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreSchool">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreState_EntryUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="1" />
+          <End Role="CoreState" Type="Self.CoreState" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreState">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreState_UpdateUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="0..1" />
+          <End Role="CoreState" Type="Self.CoreState" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreState">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreUnit_EntryUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="1" />
+          <End Role="CoreUnit" Type="Self.CoreUnit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreUnit">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreUnit_UpdateUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="0..1" />
+          <End Role="CoreUnit" Type="Self.CoreUnit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreUnit">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdentityType_EntryUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="1" />
+          <End Role="CoreIdentityType" Type="Self.CoreIdentityType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreIdentityType">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdentityType_UpdateUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="0..1" />
+          <End Role="CoreIdentityType" Type="Self.CoreIdentityType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreIdentityType">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGEmployee_EntryUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="1" />
+          <End Role="NSGEmployee" Type="Self.NSGEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="NSGEmployee">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGEmployee_QuarterTypeID_CoreQuarterType_QuarterTypeID">
+          <End Role="CoreQuarterType" Type="Self.CoreQuarterType" Multiplicity="0..1" />
+          <End Role="NSGEmployee" Type="Self.NSGEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreQuarterType">
+              <PropertyRef Name="QuarterTypeID" />
+            </Principal>
+            <Dependent Role="NSGEmployee">
+              <PropertyRef Name="QuarterTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGEmployee_RankID_CoreRank_RankID">
+          <End Role="CoreRank" Type="Self.CoreRank" Multiplicity="0..1" />
+          <End Role="NSGEmployee" Type="Self.NSGEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreRank">
+              <PropertyRef Name="RankID" />
+            </Principal>
+            <Dependent Role="NSGEmployee">
+              <PropertyRef Name="RankID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGEmployee_UnitID_CoreUnit_UnitID">
+          <End Role="CoreUnit" Type="Self.CoreUnit" Multiplicity="0..1" />
+          <End Role="NSGEmployee" Type="Self.NSGEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUnit">
+              <PropertyRef Name="UnitID" />
+            </Principal>
+            <Dependent Role="NSGEmployee">
+              <PropertyRef Name="UnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGEmployee_UpdateUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="0..1" />
+          <End Role="NSGEmployee" Type="Self.NSGEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="NSGEmployee">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGStudent_BusRouteDetailID_CoreBusRouteDetail_BusRouteDetailID">
+          <End Role="CoreBusRouteDetail" Type="Self.CoreBusRouteDetail" Multiplicity="1" />
+          <End Role="NSGStudent" Type="Self.NSGStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreBusRouteDetail">
+              <PropertyRef Name="BusRouteDetailID" />
+            </Principal>
+            <Dependent Role="NSGStudent">
+              <PropertyRef Name="BusRouteDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGStudent_BusRouteID_CoreBusRoute_BusRouteID">
+          <End Role="CoreBusRoute" Type="Self.CoreBusRoute" Multiplicity="1" />
+          <End Role="NSGStudent" Type="Self.NSGStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreBusRoute">
+              <PropertyRef Name="BusRouteID" />
+            </Principal>
+            <Dependent Role="NSGStudent">
+              <PropertyRef Name="BusRouteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGStudent_EntryUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="1" />
+          <End Role="NSGStudent" Type="Self.NSGStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="NSGStudent">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGStudent_QuarterTypeID_CoreQuarterType_QuarterTypeID">
+          <End Role="CoreQuarterType" Type="Self.CoreQuarterType" Multiplicity="0..1" />
+          <End Role="NSGStudent" Type="Self.NSGStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreQuarterType">
+              <PropertyRef Name="QuarterTypeID" />
+            </Principal>
+            <Dependent Role="NSGStudent">
+              <PropertyRef Name="QuarterTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGStudent_RankID_CoreRank_RankID">
+          <End Role="CoreRank" Type="Self.CoreRank" Multiplicity="0..1" />
+          <End Role="NSGStudent" Type="Self.NSGStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreRank">
+              <PropertyRef Name="RankID" />
+            </Principal>
+            <Dependent Role="NSGStudent">
+              <PropertyRef Name="RankID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGStudent_RelationshipID_CoreRelationship_RelationshipID">
+          <End Role="CoreRelationship" Type="Self.CoreRelationship" Multiplicity="1" />
+          <End Role="NSGStudent" Type="Self.NSGStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreRelationship">
+              <PropertyRef Name="RelationshipID" />
+            </Principal>
+            <Dependent Role="NSGStudent">
+              <PropertyRef Name="RelationshipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGStudent_SchoolID_CoreSchool_SchoolID">
+          <End Role="CoreSchool" Type="Self.CoreSchool" Multiplicity="1" />
+          <End Role="NSGStudent" Type="Self.NSGStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreSchool">
+              <PropertyRef Name="SchoolID" />
+            </Principal>
+            <Dependent Role="NSGStudent">
+              <PropertyRef Name="SchoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGStudent_UnitID_CoreUnit_UnitID">
+          <End Role="CoreUnit" Type="Self.CoreUnit" Multiplicity="0..1" />
+          <End Role="NSGStudent" Type="Self.NSGStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUnit">
+              <PropertyRef Name="UnitID" />
+            </Principal>
+            <Dependent Role="NSGStudent">
+              <PropertyRef Name="UnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGStudent_UpdateUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="0..1" />
+          <End Role="NSGStudent" Type="Self.NSGStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="NSGStudent">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGStudentDocument_EntryUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="1" />
+          <End Role="NSGStudentDocument" Type="Self.NSGStudentDocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="NSGStudentDocument">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGStudentDocument_NSGStudentID_NSGStudent_NSGStudentID">
+          <End Role="NSGStudent" Type="Self.NSGStudent" Multiplicity="1" />
+          <End Role="NSGStudentDocument" Type="Self.NSGStudentDocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NSGStudent">
+              <PropertyRef Name="NSGStudentID" />
+            </Principal>
+            <Dependent Role="NSGStudentDocument">
+              <PropertyRef Name="NSGStudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGStudentDocument_UpdateUserID_CoreUser_CoreUserID">
+          <End Role="CoreUser" Type="Self.CoreUser" Multiplicity="0..1" />
+          <End Role="NSGStudentDocument" Type="Self.NSGStudentDocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="NSGStudentDocument">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="BusDetailsGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RegistrationNumber" Type="varchar" Mode="In" />
+          <Parameter Name="RouteNumber" Type="varchar" Mode="In" />
+          <Parameter Name="SchoolName" Type="varchar" Mode="In" />
+          <Parameter Name="RouteID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="BusPickupPointsGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="BusRouteDetailsGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RegistrationNumber" Type="varchar" Mode="In" />
+          <Parameter Name="RouteNumber" Type="varchar" Mode="In" />
+          <Parameter Name="SchoolName" Type="varchar" Mode="In" />
+          <Parameter Name="RouteID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="BusRouteSchoolsGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="RouteID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PassHolderDetailsGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IssueDate" Type="datetime" Mode="In" />
+          <Parameter Name="ExpiryDate" Type="datetime" Mode="In" />
+          <Parameter Name="StudenPassID" Type="bigint" Mode="In" />
+          <Parameter Name="StudentName" Type="varchar" Mode="In" />
+          <Parameter Name="SchoolName" Type="varchar" Mode="In" />
+          <Parameter Name="ActiveOnly" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="SchoolDetailsGet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="SchoolName" Type="varchar" Mode="In" />
+          <Parameter Name="RouteNumber" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="NSGTransportManagementModelStoreContainer">
+          <EntitySet Name="CoreBus" EntityType="Self.CoreBus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreBusRoute" EntityType="Self.CoreBusRoute" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreBusRouteDetail" EntityType="Self.CoreBusRouteDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreBusRouteSchool" EntityType="Self.CoreBusRouteSchool" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreCity" EntityType="Self.CoreCity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreIdentityType" EntityType="Self.CoreIdentityType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreQuarterType" EntityType="Self.CoreQuarterType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreRank" EntityType="Self.CoreRank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreRelationship" EntityType="Self.CoreRelationship" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreSchool" EntityType="Self.CoreSchool" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreState" EntityType="Self.CoreState" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreUnit" EntityType="Self.CoreUnit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CoreUser" EntityType="Self.CoreUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ErrorLog" EntityType="Self.ErrorLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NSGEmployee" EntityType="Self.NSGEmployee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NSGStudent" EntityType="Self.NSGStudent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NSGStudentDocument" EntityType="Self.NSGStudentDocument" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StudentPassDetailView" EntityType="Self.StudentPassDetailView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [StudentPassDetailView].[PassId] AS [PassId], 
+    [StudentPassDetailView].[Term] AS [Term], 
+    [StudentPassDetailView].[RegNo] AS [RegNo], 
+    [StudentPassDetailView].[RouteNo] AS [RouteNo], 
+    [StudentPassDetailView].[FullName] AS [FullName], 
+    [StudentPassDetailView].[GuardianName] AS [GuardianName], 
+    [StudentPassDetailView].[UnitName] AS [UnitName], 
+    [StudentPassDetailView].[Class] AS [Class], 
+    [StudentPassDetailView].[Age] AS [Age], 
+    [StudentPassDetailView].[SchoolName] AS [SchoolName], 
+    [StudentPassDetailView].[BusStopName] AS [BusStopName], 
+    [StudentPassDetailView].[IssueDate] AS [IssueDate], 
+    [StudentPassDetailView].[ExpiryDate] AS [ExpiryDate], 
+    [StudentPassDetailView].[MobileNo] AS [MobileNo], 
+    [StudentPassDetailView].[PassHolderPhoto] AS [PassHolderPhoto]
+    FROM [dbo].[StudentPassDetailView] AS [StudentPassDetailView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_CoreBus_BusRouteID_CoreBusRoute_BusRouteID" Association="Self.FK_CoreBus_BusRouteID_CoreBusRoute_BusRouteID">
+            <End Role="CoreBusRoute" EntitySet="CoreBusRoute" />
+            <End Role="CoreBus" EntitySet="CoreBus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreBus_EntryUserID_CoreUser_CoreUserID" Association="Self.FK_CoreBus_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="CoreBus" EntitySet="CoreBus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreBus_UpdateUserID_CoreUser_CoreUserID" Association="Self.FK_CoreBus_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="CoreBus" EntitySet="CoreBus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreBusRoute_EntryUserID_CoreUser_CoreUserID" Association="Self.FK_CoreBusRoute_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="CoreBusRoute" EntitySet="CoreBusRoute" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreBusRoute_UpdateUserID_CoreUser_CoreUserID" Association="Self.FK_CoreBusRoute_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="CoreBusRoute" EntitySet="CoreBusRoute" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreBusRouteDetail_BusRouteID_CoreBusRoute_BusRouteID" Association="Self.FK_CoreBusRouteDetail_BusRouteID_CoreBusRoute_BusRouteID">
+            <End Role="CoreBusRoute" EntitySet="CoreBusRoute" />
+            <End Role="CoreBusRouteDetail" EntitySet="CoreBusRouteDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreBusRouteDetail_EntryUserID_CoreUser_CoreUserID" Association="Self.FK_CoreBusRouteDetail_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="CoreBusRouteDetail" EntitySet="CoreBusRouteDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreBusRouteDetail_UpdateUserID_CoreUser_CoreUserID" Association="Self.FK_CoreBusRouteDetail_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="CoreBusRouteDetail" EntitySet="CoreBusRouteDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreBusRouteSchool_BusRouteID_CoreBusRoute_BusRouteID" Association="Self.FK_CoreBusRouteSchool_BusRouteID_CoreBusRoute_BusRouteID">
+            <End Role="CoreBusRoute" EntitySet="CoreBusRoute" />
+            <End Role="CoreBusRouteSchool" EntitySet="CoreBusRouteSchool" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreBusRouteSchool_EntryUserID_CoreUser_CoreUserID" Association="Self.FK_CoreBusRouteSchool_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="CoreBusRouteSchool" EntitySet="CoreBusRouteSchool" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreBusRouteSchool_SchoolID_CoreSchool_SchoolID" Association="Self.FK_CoreBusRouteSchool_SchoolID_CoreSchool_SchoolID">
+            <End Role="CoreSchool" EntitySet="CoreSchool" />
+            <End Role="CoreBusRouteSchool" EntitySet="CoreBusRouteSchool" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreBusRouteSchool_UpdateUserID_CoreUser_CoreUserID" Association="Self.FK_CoreBusRouteSchool_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="CoreBusRouteSchool" EntitySet="CoreBusRouteSchool" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreCity_EntryUserID_CoreUser_CoreUserID" Association="Self.FK_CoreCity_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="CoreCity" EntitySet="CoreCity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreCity_StateID_CoreState_StateID" Association="Self.FK_CoreCity_StateID_CoreState_StateID">
+            <End Role="CoreState" EntitySet="CoreState" />
+            <End Role="CoreCity" EntitySet="CoreCity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreCity_UpdateUserID_CoreUser_CoreUserID" Association="Self.FK_CoreCity_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="CoreCity" EntitySet="CoreCity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreQuarterType_EntryUserID_CoreUser_CoreUserID" Association="Self.FK_CoreQuarterType_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="CoreQuarterType" EntitySet="CoreQuarterType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreQuarterType_UpdateUserID_CoreUser_CoreUserID" Association="Self.FK_CoreQuarterType_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="CoreQuarterType" EntitySet="CoreQuarterType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreRank_EntryUserID_CoreUser_CoreUserID" Association="Self.FK_CoreRank_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="CoreRank" EntitySet="CoreRank" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreRank_UpdateUserID_CoreUser_CoreUserID" Association="Self.FK_CoreRank_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="CoreRank" EntitySet="CoreRank" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreRelationship_EntryUserID_CoreUser_CoreUserID" Association="Self.FK_CoreRelationship_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="CoreRelationship" EntitySet="CoreRelationship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreRelationship_UpdateUserID_CoreUser_CoreUserID" Association="Self.FK_CoreRelationship_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="CoreRelationship" EntitySet="CoreRelationship" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreSchool_CityID_CoreCity_CityID" Association="Self.FK_CoreSchool_CityID_CoreCity_CityID">
+            <End Role="CoreCity" EntitySet="CoreCity" />
+            <End Role="CoreSchool" EntitySet="CoreSchool" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreSchool_EntryUserID_CoreUser_CoreUserID" Association="Self.FK_CoreSchool_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="CoreSchool" EntitySet="CoreSchool" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreSchool_StateID_CoreState_StateID" Association="Self.FK_CoreSchool_StateID_CoreState_StateID">
+            <End Role="CoreState" EntitySet="CoreState" />
+            <End Role="CoreSchool" EntitySet="CoreSchool" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreSchool_UpdateUserID_CoreUser_CoreUserID" Association="Self.FK_CoreSchool_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="CoreSchool" EntitySet="CoreSchool" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreState_EntryUserID_CoreUser_CoreUserID" Association="Self.FK_CoreState_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="CoreState" EntitySet="CoreState" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreState_UpdateUserID_CoreUser_CoreUserID" Association="Self.FK_CoreState_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="CoreState" EntitySet="CoreState" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreUnit_EntryUserID_CoreUser_CoreUserID" Association="Self.FK_CoreUnit_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="CoreUnit" EntitySet="CoreUnit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreUnit_UpdateUserID_CoreUser_CoreUserID" Association="Self.FK_CoreUnit_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="CoreUnit" EntitySet="CoreUnit" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdentityType_EntryUserID_CoreUser_CoreUserID" Association="Self.FK_IdentityType_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="CoreIdentityType" EntitySet="CoreIdentityType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdentityType_UpdateUserID_CoreUser_CoreUserID" Association="Self.FK_IdentityType_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="CoreIdentityType" EntitySet="CoreIdentityType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGEmployee_EntryUserID_CoreUser_CoreUserID" Association="Self.FK_NSGEmployee_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="NSGEmployee" EntitySet="NSGEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGEmployee_QuarterTypeID_CoreQuarterType_QuarterTypeID" Association="Self.FK_NSGEmployee_QuarterTypeID_CoreQuarterType_QuarterTypeID">
+            <End Role="CoreQuarterType" EntitySet="CoreQuarterType" />
+            <End Role="NSGEmployee" EntitySet="NSGEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGEmployee_RankID_CoreRank_RankID" Association="Self.FK_NSGEmployee_RankID_CoreRank_RankID">
+            <End Role="CoreRank" EntitySet="CoreRank" />
+            <End Role="NSGEmployee" EntitySet="NSGEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGEmployee_UnitID_CoreUnit_UnitID" Association="Self.FK_NSGEmployee_UnitID_CoreUnit_UnitID">
+            <End Role="CoreUnit" EntitySet="CoreUnit" />
+            <End Role="NSGEmployee" EntitySet="NSGEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGEmployee_UpdateUserID_CoreUser_CoreUserID" Association="Self.FK_NSGEmployee_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="NSGEmployee" EntitySet="NSGEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGStudent_BusRouteDetailID_CoreBusRouteDetail_BusRouteDetailID" Association="Self.FK_NSGStudent_BusRouteDetailID_CoreBusRouteDetail_BusRouteDetailID">
+            <End Role="CoreBusRouteDetail" EntitySet="CoreBusRouteDetail" />
+            <End Role="NSGStudent" EntitySet="NSGStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGStudent_BusRouteID_CoreBusRoute_BusRouteID" Association="Self.FK_NSGStudent_BusRouteID_CoreBusRoute_BusRouteID">
+            <End Role="CoreBusRoute" EntitySet="CoreBusRoute" />
+            <End Role="NSGStudent" EntitySet="NSGStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGStudent_EntryUserID_CoreUser_CoreUserID" Association="Self.FK_NSGStudent_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="NSGStudent" EntitySet="NSGStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGStudent_QuarterTypeID_CoreQuarterType_QuarterTypeID" Association="Self.FK_NSGStudent_QuarterTypeID_CoreQuarterType_QuarterTypeID">
+            <End Role="CoreQuarterType" EntitySet="CoreQuarterType" />
+            <End Role="NSGStudent" EntitySet="NSGStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGStudent_RankID_CoreRank_RankID" Association="Self.FK_NSGStudent_RankID_CoreRank_RankID">
+            <End Role="CoreRank" EntitySet="CoreRank" />
+            <End Role="NSGStudent" EntitySet="NSGStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGStudent_RelationshipID_CoreRelationship_RelationshipID" Association="Self.FK_NSGStudent_RelationshipID_CoreRelationship_RelationshipID">
+            <End Role="CoreRelationship" EntitySet="CoreRelationship" />
+            <End Role="NSGStudent" EntitySet="NSGStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGStudent_SchoolID_CoreSchool_SchoolID" Association="Self.FK_NSGStudent_SchoolID_CoreSchool_SchoolID">
+            <End Role="CoreSchool" EntitySet="CoreSchool" />
+            <End Role="NSGStudent" EntitySet="NSGStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGStudent_UnitID_CoreUnit_UnitID" Association="Self.FK_NSGStudent_UnitID_CoreUnit_UnitID">
+            <End Role="CoreUnit" EntitySet="CoreUnit" />
+            <End Role="NSGStudent" EntitySet="NSGStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGStudent_UpdateUserID_CoreUser_CoreUserID" Association="Self.FK_NSGStudent_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="NSGStudent" EntitySet="NSGStudent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGStudentDocument_EntryUserID_CoreUser_CoreUserID" Association="Self.FK_NSGStudentDocument_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="NSGStudentDocument" EntitySet="NSGStudentDocument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGStudentDocument_NSGStudentID_NSGStudent_NSGStudentID" Association="Self.FK_NSGStudentDocument_NSGStudentID_NSGStudent_NSGStudentID">
+            <End Role="NSGStudent" EntitySet="NSGStudent" />
+            <End Role="NSGStudentDocument" EntitySet="NSGStudentDocument" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGStudentDocument_UpdateUserID_CoreUser_CoreUserID" Association="Self.FK_NSGStudentDocument_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUser" />
+            <End Role="NSGStudentDocument" EntitySet="NSGStudentDocument" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NSGTransportManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="NSGTransportManagementEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="CoreBus" EntityType="NSGTransportManagementModel.CoreBus" />
+          <EntitySet Name="CoreBusRoutes" EntityType="NSGTransportManagementModel.CoreBusRoute" />
+          <EntitySet Name="CoreBusRouteSchools" EntityType="NSGTransportManagementModel.CoreBusRouteSchool" />
+          <EntitySet Name="CoreCities" EntityType="NSGTransportManagementModel.CoreCity" />
+          <EntitySet Name="CoreIdentityTypes" EntityType="NSGTransportManagementModel.CoreIdentityType" />
+          <EntitySet Name="CoreQuarterTypes" EntityType="NSGTransportManagementModel.CoreQuarterType" />
+          <EntitySet Name="CoreRanks" EntityType="NSGTransportManagementModel.CoreRank" />
+          <EntitySet Name="CoreRelationships" EntityType="NSGTransportManagementModel.CoreRelationship" />
+          <EntitySet Name="CoreSchools" EntityType="NSGTransportManagementModel.CoreSchool" />
+          <EntitySet Name="CoreStates" EntityType="NSGTransportManagementModel.CoreState" />
+          <EntitySet Name="CoreUnits" EntityType="NSGTransportManagementModel.CoreUnit" />
+          <EntitySet Name="CoreUsers" EntityType="NSGTransportManagementModel.CoreUser" />
+          <EntitySet Name="ErrorLogs" EntityType="NSGTransportManagementModel.ErrorLog" />
+          <EntitySet Name="NSGEmployees" EntityType="NSGTransportManagementModel.NSGEmployee" />
+          <EntitySet Name="NSGStudentDocuments" EntityType="NSGTransportManagementModel.NSGStudentDocument" />
+          <AssociationSet Name="FK_CoreBus_BusRouteID_CoreBusRoute_BusRouteID" Association="NSGTransportManagementModel.FK_CoreBus_BusRouteID_CoreBusRoute_BusRouteID">
+            <End Role="CoreBusRoute" EntitySet="CoreBusRoutes" />
+            <End Role="CoreBu" EntitySet="CoreBus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreBus_EntryUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_CoreBus_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="CoreBu" EntitySet="CoreBus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreBus_UpdateUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_CoreBus_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="CoreBu" EntitySet="CoreBus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreBusRoute_EntryUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_CoreBusRoute_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="CoreBusRoute" EntitySet="CoreBusRoutes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreBusRoute_UpdateUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_CoreBusRoute_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="CoreBusRoute" EntitySet="CoreBusRoutes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreBusRouteSchool_BusRouteID_CoreBusRoute_BusRouteID" Association="NSGTransportManagementModel.FK_CoreBusRouteSchool_BusRouteID_CoreBusRoute_BusRouteID">
+            <End Role="CoreBusRoute" EntitySet="CoreBusRoutes" />
+            <End Role="CoreBusRouteSchool" EntitySet="CoreBusRouteSchools" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreBusRouteSchool_EntryUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_CoreBusRouteSchool_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="CoreBusRouteSchool" EntitySet="CoreBusRouteSchools" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreBusRouteSchool_SchoolID_CoreSchool_SchoolID" Association="NSGTransportManagementModel.FK_CoreBusRouteSchool_SchoolID_CoreSchool_SchoolID">
+            <End Role="CoreSchool" EntitySet="CoreSchools" />
+            <End Role="CoreBusRouteSchool" EntitySet="CoreBusRouteSchools" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreBusRouteSchool_UpdateUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_CoreBusRouteSchool_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="CoreBusRouteSchool" EntitySet="CoreBusRouteSchools" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreCity_EntryUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_CoreCity_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="CoreCity" EntitySet="CoreCities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreCity_StateID_CoreState_StateID" Association="NSGTransportManagementModel.FK_CoreCity_StateID_CoreState_StateID">
+            <End Role="CoreState" EntitySet="CoreStates" />
+            <End Role="CoreCity" EntitySet="CoreCities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreCity_UpdateUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_CoreCity_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="CoreCity" EntitySet="CoreCities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreSchool_CityID_CoreCity_CityID" Association="NSGTransportManagementModel.FK_CoreSchool_CityID_CoreCity_CityID">
+            <End Role="CoreCity" EntitySet="CoreCities" />
+            <End Role="CoreSchool" EntitySet="CoreSchools" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdentityType_EntryUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_IdentityType_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="CoreIdentityType" EntitySet="CoreIdentityTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IdentityType_UpdateUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_IdentityType_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="CoreIdentityType" EntitySet="CoreIdentityTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreQuarterType_EntryUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_CoreQuarterType_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="CoreQuarterType" EntitySet="CoreQuarterTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreQuarterType_UpdateUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_CoreQuarterType_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="CoreQuarterType" EntitySet="CoreQuarterTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGEmployee_QuarterTypeID_CoreQuarterType_QuarterTypeID" Association="NSGTransportManagementModel.FK_NSGEmployee_QuarterTypeID_CoreQuarterType_QuarterTypeID">
+            <End Role="CoreQuarterType" EntitySet="CoreQuarterTypes" />
+            <End Role="NSGEmployee" EntitySet="NSGEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreRank_EntryUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_CoreRank_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="CoreRank" EntitySet="CoreRanks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreRank_UpdateUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_CoreRank_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="CoreRank" EntitySet="CoreRanks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGEmployee_RankID_CoreRank_RankID" Association="NSGTransportManagementModel.FK_NSGEmployee_RankID_CoreRank_RankID">
+            <End Role="CoreRank" EntitySet="CoreRanks" />
+            <End Role="NSGEmployee" EntitySet="NSGEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreRelationship_EntryUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_CoreRelationship_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="CoreRelationship" EntitySet="CoreRelationships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreRelationship_UpdateUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_CoreRelationship_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="CoreRelationship" EntitySet="CoreRelationships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreSchool_EntryUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_CoreSchool_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="CoreSchool" EntitySet="CoreSchools" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreSchool_StateID_CoreState_StateID" Association="NSGTransportManagementModel.FK_CoreSchool_StateID_CoreState_StateID">
+            <End Role="CoreState" EntitySet="CoreStates" />
+            <End Role="CoreSchool" EntitySet="CoreSchools" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreSchool_UpdateUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_CoreSchool_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="CoreSchool" EntitySet="CoreSchools" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreState_EntryUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_CoreState_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="CoreState" EntitySet="CoreStates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreState_UpdateUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_CoreState_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="CoreState" EntitySet="CoreStates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreUnit_EntryUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_CoreUnit_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="CoreUnit" EntitySet="CoreUnits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreUnit_UpdateUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_CoreUnit_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="CoreUnit" EntitySet="CoreUnits" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGEmployee_UnitID_CoreUnit_UnitID" Association="NSGTransportManagementModel.FK_NSGEmployee_UnitID_CoreUnit_UnitID">
+            <End Role="CoreUnit" EntitySet="CoreUnits" />
+            <End Role="NSGEmployee" EntitySet="NSGEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGEmployee_EntryUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_NSGEmployee_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="NSGEmployee" EntitySet="NSGEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGEmployee_UpdateUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_NSGEmployee_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="NSGEmployee" EntitySet="NSGEmployees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGStudentDocument_EntryUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_NSGStudentDocument_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="NSGStudentDocument" EntitySet="NSGStudentDocuments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGStudentDocument_UpdateUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_NSGStudentDocument_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="NSGStudentDocument" EntitySet="NSGStudentDocuments" />
+          </AssociationSet>
+          <FunctionImport Name="SchoolDetailsGet" ReturnType="Collection(NSGTransportManagementModel.SchoolDetailsGet_Result)">
+            <Parameter Name="SchoolName" Mode="In" Type="String" />
+            <Parameter Name="RouteNumber" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="BusRouteDetailsGet" ReturnType="Collection(NSGTransportManagementModel.BusRouteDetailsGet_Result)">
+            <Parameter Name="RegistrationNumber" Mode="In" Type="String" />
+            <Parameter Name="RouteNumber" Mode="In" Type="String" />
+            <Parameter Name="SchoolName" Mode="In" Type="String" />
+            <Parameter Name="RouteID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="BusRouteSchoolsGet" ReturnType="Collection(NSGTransportManagementModel.BusRouteSchoolsGet_Result)">
+          <Parameter Name="RouteID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="CoreBusRouteDetails" EntityType="NSGTransportManagementModel.CoreBusRouteDetail" />
+          <AssociationSet Name="FK_CoreBusRouteDetail_BusRouteID_CoreBusRoute_BusRouteID" Association="NSGTransportManagementModel.FK_CoreBusRouteDetail_BusRouteID_CoreBusRoute_BusRouteID">
+            <End Role="CoreBusRoute" EntitySet="CoreBusRoutes" />
+            <End Role="CoreBusRouteDetail" EntitySet="CoreBusRouteDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreBusRouteDetail_EntryUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_CoreBusRouteDetail_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="CoreBusRouteDetail" EntitySet="CoreBusRouteDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CoreBusRouteDetail_UpdateUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_CoreBusRouteDetail_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="CoreBusRouteDetail" EntitySet="CoreBusRouteDetails" />
+          </AssociationSet>
+          <FunctionImport Name="BusPickupPointsGet" ReturnType="Collection(NSGTransportManagementModel.BusPickupPointsGet_Result)" />
+          <EntitySet Name="NSGStudents" EntityType="NSGTransportManagementModel.NSGStudent" />
+          <AssociationSet Name="FK_NSGStudent_BusRouteID_CoreBusRoute_BusRouteID" Association="NSGTransportManagementModel.FK_NSGStudent_BusRouteID_CoreBusRoute_BusRouteID">
+            <End Role="CoreBusRoute" EntitySet="CoreBusRoutes" />
+            <End Role="NSGStudent" EntitySet="NSGStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGStudent_BusRouteDetailID_CoreBusRouteDetail_BusRouteDetailID" Association="NSGTransportManagementModel.FK_NSGStudent_BusRouteDetailID_CoreBusRouteDetail_BusRouteDetailID">
+            <End Role="CoreBusRouteDetail" EntitySet="CoreBusRouteDetails" />
+            <End Role="NSGStudent" EntitySet="NSGStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGStudent_QuarterTypeID_CoreQuarterType_QuarterTypeID" Association="NSGTransportManagementModel.FK_NSGStudent_QuarterTypeID_CoreQuarterType_QuarterTypeID">
+            <End Role="CoreQuarterType" EntitySet="CoreQuarterTypes" />
+            <End Role="NSGStudent" EntitySet="NSGStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGStudent_RankID_CoreRank_RankID" Association="NSGTransportManagementModel.FK_NSGStudent_RankID_CoreRank_RankID">
+            <End Role="CoreRank" EntitySet="CoreRanks" />
+            <End Role="NSGStudent" EntitySet="NSGStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGStudent_RelationshipID_CoreRelationship_RelationshipID" Association="NSGTransportManagementModel.FK_NSGStudent_RelationshipID_CoreRelationship_RelationshipID">
+            <End Role="CoreRelationship" EntitySet="CoreRelationships" />
+            <End Role="NSGStudent" EntitySet="NSGStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGStudent_SchoolID_CoreSchool_SchoolID" Association="NSGTransportManagementModel.FK_NSGStudent_SchoolID_CoreSchool_SchoolID">
+            <End Role="CoreSchool" EntitySet="CoreSchools" />
+            <End Role="NSGStudent" EntitySet="NSGStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGStudent_UnitID_CoreUnit_UnitID" Association="NSGTransportManagementModel.FK_NSGStudent_UnitID_CoreUnit_UnitID">
+            <End Role="CoreUnit" EntitySet="CoreUnits" />
+            <End Role="NSGStudent" EntitySet="NSGStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGStudent_EntryUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_NSGStudent_EntryUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="NSGStudent" EntitySet="NSGStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGStudent_UpdateUserID_CoreUser_CoreUserID" Association="NSGTransportManagementModel.FK_NSGStudent_UpdateUserID_CoreUser_CoreUserID">
+            <End Role="CoreUser" EntitySet="CoreUsers" />
+            <End Role="NSGStudent" EntitySet="NSGStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NSGStudentDocument_NSGStudentID_NSGStudent_NSGStudentID" Association="NSGTransportManagementModel.FK_NSGStudentDocument_NSGStudentID_NSGStudent_NSGStudentID">
+            <End Role="NSGStudent" EntitySet="NSGStudents" />
+            <End Role="NSGStudentDocument" EntitySet="NSGStudentDocuments" />
+          </AssociationSet>
+          <EntitySet Name="StudentPassDetailViews" EntityType="NSGTransportManagementModel.StudentPassDetailView" />
+          <FunctionImport Name="BusDetailsGet" ReturnType="Collection(NSGTransportManagementModel.BusDetailsGet_Result)">
+            <Parameter Name="RegistrationNumber" Mode="In" Type="String" />
+            <Parameter Name="RouteNumber" Mode="In" Type="String" />
+            <Parameter Name="SchoolName" Mode="In" Type="String" />
+            <Parameter Name="RouteID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PassHolderDetailsGet" ReturnType="Collection(NSGTransportManagementModel.PassHolderDetailsGet_Result)">
+            <Parameter Name="IssueDate" Mode="In" Type="DateTime" />
+            <Parameter Name="ExpiryDate" Mode="In" Type="DateTime" />
+            <Parameter Name="StudenPassID" Mode="In" Type="Int64" />
+            <Parameter Name="StudentName" Mode="In" Type="String" />
+            <Parameter Name="SchoolName" Mode="In" Type="String" />
+            <Parameter Name="ActiveOnly" Mode="In" Type="Boolean" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="CoreBus">
+          <Key>
+            <PropertyRef Name="BusID" />
+          </Key>
+          <Property Name="BusID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegistrationNumber" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="TotalSeatCount" Type="Int32" Nullable="false" />
+          <Property Name="MaxPassengerAllowed" Type="Int32" Nullable="false" />
+          <Property Name="KilometerRun" Type="Int32" Nullable="false" />
+          <Property Name="DriverName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DriverContactNumber" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CoDriverName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CoDriverContactNumber" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BusRouteID" Type="Int64" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="EntryUserID" Type="Int32" Nullable="false" />
+          <Property Name="EntryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUserID" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CoreBusRoute" Relationship="NSGTransportManagementModel.FK_CoreBus_BusRouteID_CoreBusRoute_BusRouteID" FromRole="CoreBu" ToRole="CoreBusRoute" />
+          <NavigationProperty Name="CoreUser" Relationship="NSGTransportManagementModel.FK_CoreBus_EntryUserID_CoreUser_CoreUserID" FromRole="CoreBu" ToRole="CoreUser" />
+          <NavigationProperty Name="CoreUser1" Relationship="NSGTransportManagementModel.FK_CoreBus_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreBu" ToRole="CoreUser" />
+        </EntityType>
+        <EntityType Name="CoreBusRoute">
+          <Key>
+            <PropertyRef Name="BusRouteID" />
+          </Key>
+          <Property Name="BusRouteID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RouteNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="EntryUserID" Type="Int32" Nullable="false" />
+          <Property Name="EntryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUserID" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CoreBus" Relationship="NSGTransportManagementModel.FK_CoreBus_BusRouteID_CoreBusRoute_BusRouteID" FromRole="CoreBusRoute" ToRole="CoreBu" />
+          <NavigationProperty Name="CoreUser" Relationship="NSGTransportManagementModel.FK_CoreBusRoute_EntryUserID_CoreUser_CoreUserID" FromRole="CoreBusRoute" ToRole="CoreUser" />
+          <NavigationProperty Name="CoreUser1" Relationship="NSGTransportManagementModel.FK_CoreBusRoute_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreBusRoute" ToRole="CoreUser" />
+          <NavigationProperty Name="CoreBusRouteSchools" Relationship="NSGTransportManagementModel.FK_CoreBusRouteSchool_BusRouteID_CoreBusRoute_BusRouteID" FromRole="CoreBusRoute" ToRole="CoreBusRouteSchool" />
+          <NavigationProperty Name="CoreBusRouteDetails" Relationship="NSGTransportManagementModel.FK_CoreBusRouteDetail_BusRouteID_CoreBusRoute_BusRouteID" FromRole="CoreBusRoute" ToRole="CoreBusRouteDetail" />
+          <NavigationProperty Name="NSGStudents" Relationship="NSGTransportManagementModel.FK_NSGStudent_BusRouteID_CoreBusRoute_BusRouteID" FromRole="CoreBusRoute" ToRole="NSGStudent" />
+        </EntityType>
+        <EntityType Name="CoreBusRouteSchool">
+          <Key>
+            <PropertyRef Name="BusRouteSchoolID" />
+          </Key>
+          <Property Name="BusRouteSchoolID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BusRouteID" Type="Int64" Nullable="false" />
+          <Property Name="SchoolID" Type="Int64" Nullable="false" />
+          <Property Name="EntryUserID" Type="Int32" Nullable="false" />
+          <Property Name="EntryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUserID" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CoreBusRoute" Relationship="NSGTransportManagementModel.FK_CoreBusRouteSchool_BusRouteID_CoreBusRoute_BusRouteID" FromRole="CoreBusRouteSchool" ToRole="CoreBusRoute" />
+          <NavigationProperty Name="CoreUser" Relationship="NSGTransportManagementModel.FK_CoreBusRouteSchool_EntryUserID_CoreUser_CoreUserID" FromRole="CoreBusRouteSchool" ToRole="CoreUser" />
+          <NavigationProperty Name="CoreSchool" Relationship="NSGTransportManagementModel.FK_CoreBusRouteSchool_SchoolID_CoreSchool_SchoolID" FromRole="CoreBusRouteSchool" ToRole="CoreSchool" />
+          <NavigationProperty Name="CoreUser1" Relationship="NSGTransportManagementModel.FK_CoreBusRouteSchool_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreBusRouteSchool" ToRole="CoreUser" />
+        </EntityType>
+        <EntityType Name="CoreCity">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateID" Type="Int32" Nullable="false" />
+          <Property Name="CityName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EntryUserID" Type="Int32" Nullable="false" />
+          <Property Name="EntryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUserID" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CoreUser" Relationship="NSGTransportManagementModel.FK_CoreCity_EntryUserID_CoreUser_CoreUserID" FromRole="CoreCity" ToRole="CoreUser" />
+          <NavigationProperty Name="CoreState" Relationship="NSGTransportManagementModel.FK_CoreCity_StateID_CoreState_StateID" FromRole="CoreCity" ToRole="CoreState" />
+          <NavigationProperty Name="CoreUser1" Relationship="NSGTransportManagementModel.FK_CoreCity_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreCity" ToRole="CoreUser" />
+          <NavigationProperty Name="CoreSchools" Relationship="NSGTransportManagementModel.FK_CoreSchool_CityID_CoreCity_CityID" FromRole="CoreCity" ToRole="CoreSchool" />
+        </EntityType>
+        <EntityType Name="CoreIdentityType">
+          <Key>
+            <PropertyRef Name="IdentityTypeID" />
+          </Key>
+          <Property Name="IdentityTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdentityType" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="EntryUserID" Type="Int32" Nullable="false" />
+          <Property Name="EntryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUserID" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CoreUser" Relationship="NSGTransportManagementModel.FK_IdentityType_EntryUserID_CoreUser_CoreUserID" FromRole="CoreIdentityType" ToRole="CoreUser" />
+          <NavigationProperty Name="CoreUser1" Relationship="NSGTransportManagementModel.FK_IdentityType_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreIdentityType" ToRole="CoreUser" />
+        </EntityType>
+        <EntityType Name="CoreQuarterType">
+          <Key>
+            <PropertyRef Name="QuarterTypeID" />
+          </Key>
+          <Property Name="QuarterTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuarterTypeName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MaxQuarterNumber" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="EntryUserID" Type="Int32" Nullable="false" />
+          <Property Name="EntryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUserID" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CoreUser" Relationship="NSGTransportManagementModel.FK_CoreQuarterType_EntryUserID_CoreUser_CoreUserID" FromRole="CoreQuarterType" ToRole="CoreUser" />
+          <NavigationProperty Name="CoreUser1" Relationship="NSGTransportManagementModel.FK_CoreQuarterType_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreQuarterType" ToRole="CoreUser" />
+          <NavigationProperty Name="NSGEmployees" Relationship="NSGTransportManagementModel.FK_NSGEmployee_QuarterTypeID_CoreQuarterType_QuarterTypeID" FromRole="CoreQuarterType" ToRole="NSGEmployee" />
+          <NavigationProperty Name="NSGStudents" Relationship="NSGTransportManagementModel.FK_NSGStudent_QuarterTypeID_CoreQuarterType_QuarterTypeID" FromRole="CoreQuarterType" ToRole="NSGStudent" />
+        </EntityType>
+        <EntityType Name="CoreRank">
+          <Key>
+            <PropertyRef Name="RankID" />
+          </Key>
+          <Property Name="RankID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RankName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="EntryUserID" Type="Int32" Nullable="false" />
+          <Property Name="EntryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUserID" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CoreUser" Relationship="NSGTransportManagementModel.FK_CoreRank_EntryUserID_CoreUser_CoreUserID" FromRole="CoreRank" ToRole="CoreUser" />
+          <NavigationProperty Name="CoreUser1" Relationship="NSGTransportManagementModel.FK_CoreRank_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreRank" ToRole="CoreUser" />
+          <NavigationProperty Name="NSGEmployees" Relationship="NSGTransportManagementModel.FK_NSGEmployee_RankID_CoreRank_RankID" FromRole="CoreRank" ToRole="NSGEmployee" />
+          <NavigationProperty Name="NSGStudents" Relationship="NSGTransportManagementModel.FK_NSGStudent_RankID_CoreRank_RankID" FromRole="CoreRank" ToRole="NSGStudent" />
+        </EntityType>
+        <EntityType Name="CoreRelationship">
+          <Key>
+            <PropertyRef Name="RelationshipID" />
+          </Key>
+          <Property Name="RelationshipID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Relationship" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EntryUserID" Type="Int32" Nullable="false" />
+          <Property Name="EntryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUserID" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CoreUser" Relationship="NSGTransportManagementModel.FK_CoreRelationship_EntryUserID_CoreUser_CoreUserID" FromRole="CoreRelationship" ToRole="CoreUser" />
+          <NavigationProperty Name="CoreUser1" Relationship="NSGTransportManagementModel.FK_CoreRelationship_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreRelationship" ToRole="CoreUser" />
+          <NavigationProperty Name="NSGStudents" Relationship="NSGTransportManagementModel.FK_NSGStudent_RelationshipID_CoreRelationship_RelationshipID" FromRole="CoreRelationship" ToRole="NSGStudent" />
+        </EntityType>
+        <EntityType Name="CoreSchool">
+          <Key>
+            <PropertyRef Name="SchoolID" />
+          </Key>
+          <Property Name="SchoolID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SchoolName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="WinterTimingStart" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="WinterTimingEnd" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="WinterTimingFrom" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="WinterTimingTo" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="SummerTimingStart" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SummerTimingEnd" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SummerTimingFrom" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="SummerTimingTo" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="DistanceFromGarage" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="SchoolAddress" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="AdminContactNumbers" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="StateID" Type="Int32" Nullable="false" />
+          <Property Name="CityID" Type="Int64" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="EntryUserID" Type="Int32" Nullable="false" />
+          <Property Name="EntryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUserID" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CoreBusRouteSchools" Relationship="NSGTransportManagementModel.FK_CoreBusRouteSchool_SchoolID_CoreSchool_SchoolID" FromRole="CoreSchool" ToRole="CoreBusRouteSchool" />
+          <NavigationProperty Name="CoreCity" Relationship="NSGTransportManagementModel.FK_CoreSchool_CityID_CoreCity_CityID" FromRole="CoreSchool" ToRole="CoreCity" />
+          <NavigationProperty Name="CoreUser" Relationship="NSGTransportManagementModel.FK_CoreSchool_EntryUserID_CoreUser_CoreUserID" FromRole="CoreSchool" ToRole="CoreUser" />
+          <NavigationProperty Name="CoreState" Relationship="NSGTransportManagementModel.FK_CoreSchool_StateID_CoreState_StateID" FromRole="CoreSchool" ToRole="CoreState" />
+          <NavigationProperty Name="CoreUser1" Relationship="NSGTransportManagementModel.FK_CoreSchool_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreSchool" ToRole="CoreUser" />
+          <NavigationProperty Name="NSGStudents" Relationship="NSGTransportManagementModel.FK_NSGStudent_SchoolID_CoreSchool_SchoolID" FromRole="CoreSchool" ToRole="NSGStudent" />
+        </EntityType>
+        <EntityType Name="CoreState">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EntryUserID" Type="Int32" Nullable="false" />
+          <Property Name="EntryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUserID" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CoreCities" Relationship="NSGTransportManagementModel.FK_CoreCity_StateID_CoreState_StateID" FromRole="CoreState" ToRole="CoreCity" />
+          <NavigationProperty Name="CoreSchools" Relationship="NSGTransportManagementModel.FK_CoreSchool_StateID_CoreState_StateID" FromRole="CoreState" ToRole="CoreSchool" />
+          <NavigationProperty Name="CoreUser" Relationship="NSGTransportManagementModel.FK_CoreState_EntryUserID_CoreUser_CoreUserID" FromRole="CoreState" ToRole="CoreUser" />
+          <NavigationProperty Name="CoreUser1" Relationship="NSGTransportManagementModel.FK_CoreState_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreState" ToRole="CoreUser" />
+        </EntityType>
+        <EntityType Name="CoreUnit">
+          <Key>
+            <PropertyRef Name="UnitID" />
+          </Key>
+          <Property Name="UnitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UnitName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="EntryUserID" Type="Int32" Nullable="false" />
+          <Property Name="EntryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUserID" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CoreUser" Relationship="NSGTransportManagementModel.FK_CoreUnit_EntryUserID_CoreUser_CoreUserID" FromRole="CoreUnit" ToRole="CoreUser" />
+          <NavigationProperty Name="CoreUser1" Relationship="NSGTransportManagementModel.FK_CoreUnit_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreUnit" ToRole="CoreUser" />
+          <NavigationProperty Name="NSGEmployees" Relationship="NSGTransportManagementModel.FK_NSGEmployee_UnitID_CoreUnit_UnitID" FromRole="CoreUnit" ToRole="NSGEmployee" />
+          <NavigationProperty Name="NSGStudents" Relationship="NSGTransportManagementModel.FK_NSGStudent_UnitID_CoreUnit_UnitID" FromRole="CoreUnit" ToRole="NSGStudent" />
+        </EntityType>
+        <EntityType Name="CoreUser">
+          <Key>
+            <PropertyRef Name="CoreUserID" />
+          </Key>
+          <Property Name="CoreUserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserPassword" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="EntryUserID" Type="Int32" Nullable="false" />
+          <Property Name="EntryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUserID" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CoreBus" Relationship="NSGTransportManagementModel.FK_CoreBus_EntryUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="CoreBu" />
+          <NavigationProperty Name="CoreBus1" Relationship="NSGTransportManagementModel.FK_CoreBus_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="CoreBu" />
+          <NavigationProperty Name="CoreBusRoutes" Relationship="NSGTransportManagementModel.FK_CoreBusRoute_EntryUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="CoreBusRoute" />
+          <NavigationProperty Name="CoreBusRoutes1" Relationship="NSGTransportManagementModel.FK_CoreBusRoute_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="CoreBusRoute" />
+          <NavigationProperty Name="CoreBusRouteSchools" Relationship="NSGTransportManagementModel.FK_CoreBusRouteSchool_EntryUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="CoreBusRouteSchool" />
+          <NavigationProperty Name="CoreBusRouteSchools1" Relationship="NSGTransportManagementModel.FK_CoreBusRouteSchool_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="CoreBusRouteSchool" />
+          <NavigationProperty Name="CoreCities" Relationship="NSGTransportManagementModel.FK_CoreCity_EntryUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="CoreCity" />
+          <NavigationProperty Name="CoreCities1" Relationship="NSGTransportManagementModel.FK_CoreCity_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="CoreCity" />
+          <NavigationProperty Name="CoreIdentityTypes" Relationship="NSGTransportManagementModel.FK_IdentityType_EntryUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="CoreIdentityType" />
+          <NavigationProperty Name="CoreIdentityTypes1" Relationship="NSGTransportManagementModel.FK_IdentityType_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="CoreIdentityType" />
+          <NavigationProperty Name="CoreQuarterTypes" Relationship="NSGTransportManagementModel.FK_CoreQuarterType_EntryUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="CoreQuarterType" />
+          <NavigationProperty Name="CoreQuarterTypes1" Relationship="NSGTransportManagementModel.FK_CoreQuarterType_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="CoreQuarterType" />
+          <NavigationProperty Name="CoreRanks" Relationship="NSGTransportManagementModel.FK_CoreRank_EntryUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="CoreRank" />
+          <NavigationProperty Name="CoreRanks1" Relationship="NSGTransportManagementModel.FK_CoreRank_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="CoreRank" />
+          <NavigationProperty Name="CoreRelationships" Relationship="NSGTransportManagementModel.FK_CoreRelationship_EntryUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="CoreRelationship" />
+          <NavigationProperty Name="CoreRelationships1" Relationship="NSGTransportManagementModel.FK_CoreRelationship_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="CoreRelationship" />
+          <NavigationProperty Name="CoreSchools" Relationship="NSGTransportManagementModel.FK_CoreSchool_EntryUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="CoreSchool" />
+          <NavigationProperty Name="CoreSchools1" Relationship="NSGTransportManagementModel.FK_CoreSchool_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="CoreSchool" />
+          <NavigationProperty Name="CoreStates" Relationship="NSGTransportManagementModel.FK_CoreState_EntryUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="CoreState" />
+          <NavigationProperty Name="CoreStates1" Relationship="NSGTransportManagementModel.FK_CoreState_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="CoreState" />
+          <NavigationProperty Name="CoreUnits" Relationship="NSGTransportManagementModel.FK_CoreUnit_EntryUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="CoreUnit" />
+          <NavigationProperty Name="CoreUnits1" Relationship="NSGTransportManagementModel.FK_CoreUnit_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="CoreUnit" />
+          <NavigationProperty Name="NSGEmployees" Relationship="NSGTransportManagementModel.FK_NSGEmployee_EntryUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="NSGEmployee" />
+          <NavigationProperty Name="NSGEmployees1" Relationship="NSGTransportManagementModel.FK_NSGEmployee_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="NSGEmployee" />
+          <NavigationProperty Name="NSGStudentDocuments" Relationship="NSGTransportManagementModel.FK_NSGStudentDocument_EntryUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="NSGStudentDocument" />
+          <NavigationProperty Name="NSGStudentDocuments1" Relationship="NSGTransportManagementModel.FK_NSGStudentDocument_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="NSGStudentDocument" />
+          <NavigationProperty Name="CoreBusRouteDetails" Relationship="NSGTransportManagementModel.FK_CoreBusRouteDetail_EntryUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="CoreBusRouteDetail" />
+          <NavigationProperty Name="CoreBusRouteDetails1" Relationship="NSGTransportManagementModel.FK_CoreBusRouteDetail_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="CoreBusRouteDetail" />
+          <NavigationProperty Name="NSGStudents" Relationship="NSGTransportManagementModel.FK_NSGStudent_EntryUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="NSGStudent" />
+          <NavigationProperty Name="NSGStudents1" Relationship="NSGTransportManagementModel.FK_NSGStudent_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreUser" ToRole="NSGStudent" />
+          </EntityType>
+        <EntityType Name="ErrorLog">
+          <Key>
+            <PropertyRef Name="ErrorLogID" />
+          </Key>
+          <Property Name="ErrorLogID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SPName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ErrorNumber" Type="Int32" />
+          <Property Name="ErrorSeverity" Type="Int32" />
+          <Property Name="ErrorState" Type="Int32" />
+          <Property Name="ErrorMessage" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="ErrorTime" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="NSGEmployee">
+          <Key>
+            <PropertyRef Name="NSGEmployeeID" />
+          </Key>
+          <Property Name="NSGEmployeeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NSGEmployeeCode" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="RankID" Type="Int32" />
+          <Property Name="UnitID" Type="Int32" />
+          <Property Name="QuarterTypeID" Type="Int32" />
+          <Property Name="QuarterNumber" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="EntryUserID" Type="Int32" Nullable="false" />
+          <Property Name="EntryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUserID" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CoreQuarterType" Relationship="NSGTransportManagementModel.FK_NSGEmployee_QuarterTypeID_CoreQuarterType_QuarterTypeID" FromRole="NSGEmployee" ToRole="CoreQuarterType" />
+          <NavigationProperty Name="CoreRank" Relationship="NSGTransportManagementModel.FK_NSGEmployee_RankID_CoreRank_RankID" FromRole="NSGEmployee" ToRole="CoreRank" />
+          <NavigationProperty Name="CoreUnit" Relationship="NSGTransportManagementModel.FK_NSGEmployee_UnitID_CoreUnit_UnitID" FromRole="NSGEmployee" ToRole="CoreUnit" />
+          <NavigationProperty Name="CoreUser" Relationship="NSGTransportManagementModel.FK_NSGEmployee_EntryUserID_CoreUser_CoreUserID" FromRole="NSGEmployee" ToRole="CoreUser" />
+          <NavigationProperty Name="CoreUser1" Relationship="NSGTransportManagementModel.FK_NSGEmployee_UpdateUserID_CoreUser_CoreUserID" FromRole="NSGEmployee" ToRole="CoreUser" />
+        </EntityType>
+        <EntityType Name="NSGStudentDocument">
+          <Key>
+            <PropertyRef Name="NSGStudentDocumentID" />
+          </Key>
+          <Property Name="NSGStudentDocumentID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NSGStudentID" Type="Int64" Nullable="false" />
+          <Property Name="DocumentName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DocumentPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="EntryUserID" Type="Int32" Nullable="false" />
+          <Property Name="EntryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUserID" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CoreUser" Relationship="NSGTransportManagementModel.FK_NSGStudentDocument_EntryUserID_CoreUser_CoreUserID" FromRole="NSGStudentDocument" ToRole="CoreUser" />
+          <NavigationProperty Name="CoreUser1" Relationship="NSGTransportManagementModel.FK_NSGStudentDocument_UpdateUserID_CoreUser_CoreUserID" FromRole="NSGStudentDocument" ToRole="CoreUser" />
+          <NavigationProperty Name="NSGStudent" Relationship="NSGTransportManagementModel.FK_NSGStudentDocument_NSGStudentID_NSGStudent_NSGStudentID" FromRole="NSGStudentDocument" ToRole="NSGStudent" />
+        </EntityType>
+        <Association Name="FK_CoreBus_BusRouteID_CoreBusRoute_BusRouteID">
+          <End Type="NSGTransportManagementModel.CoreBusRoute" Role="CoreBusRoute" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.CoreBus" Role="CoreBu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreBusRoute">
+              <PropertyRef Name="BusRouteID" />
+            </Principal>
+            <Dependent Role="CoreBu">
+              <PropertyRef Name="BusRouteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreBus_EntryUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.CoreBus" Role="CoreBu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreBu">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreBus_UpdateUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="0..1" />
+          <End Type="NSGTransportManagementModel.CoreBus" Role="CoreBu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreBu">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreBusRoute_EntryUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.CoreBusRoute" Role="CoreBusRoute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreBusRoute">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreBusRoute_UpdateUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="0..1" />
+          <End Type="NSGTransportManagementModel.CoreBusRoute" Role="CoreBusRoute" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreBusRoute">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreBusRouteSchool_BusRouteID_CoreBusRoute_BusRouteID">
+          <End Type="NSGTransportManagementModel.CoreBusRoute" Role="CoreBusRoute" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.CoreBusRouteSchool" Role="CoreBusRouteSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreBusRoute">
+              <PropertyRef Name="BusRouteID" />
+            </Principal>
+            <Dependent Role="CoreBusRouteSchool">
+              <PropertyRef Name="BusRouteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreBusRouteSchool_EntryUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.CoreBusRouteSchool" Role="CoreBusRouteSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreBusRouteSchool">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreBusRouteSchool_SchoolID_CoreSchool_SchoolID">
+          <End Type="NSGTransportManagementModel.CoreSchool" Role="CoreSchool" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.CoreBusRouteSchool" Role="CoreBusRouteSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreSchool">
+              <PropertyRef Name="SchoolID" />
+            </Principal>
+            <Dependent Role="CoreBusRouteSchool">
+              <PropertyRef Name="SchoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreBusRouteSchool_UpdateUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="0..1" />
+          <End Type="NSGTransportManagementModel.CoreBusRouteSchool" Role="CoreBusRouteSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreBusRouteSchool">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreCity_EntryUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.CoreCity" Role="CoreCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreCity">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreCity_StateID_CoreState_StateID">
+          <End Type="NSGTransportManagementModel.CoreState" Role="CoreState" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.CoreCity" Role="CoreCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreState">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="CoreCity">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreCity_UpdateUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="0..1" />
+          <End Type="NSGTransportManagementModel.CoreCity" Role="CoreCity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreCity">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreSchool_CityID_CoreCity_CityID">
+          <End Type="NSGTransportManagementModel.CoreCity" Role="CoreCity" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.CoreSchool" Role="CoreSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreCity">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="CoreSchool">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdentityType_EntryUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.CoreIdentityType" Role="CoreIdentityType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreIdentityType">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IdentityType_UpdateUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="0..1" />
+          <End Type="NSGTransportManagementModel.CoreIdentityType" Role="CoreIdentityType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreIdentityType">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreQuarterType_EntryUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.CoreQuarterType" Role="CoreQuarterType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreQuarterType">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreQuarterType_UpdateUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="0..1" />
+          <End Type="NSGTransportManagementModel.CoreQuarterType" Role="CoreQuarterType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreQuarterType">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGEmployee_QuarterTypeID_CoreQuarterType_QuarterTypeID">
+          <End Type="NSGTransportManagementModel.CoreQuarterType" Role="CoreQuarterType" Multiplicity="0..1" />
+          <End Type="NSGTransportManagementModel.NSGEmployee" Role="NSGEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreQuarterType">
+              <PropertyRef Name="QuarterTypeID" />
+            </Principal>
+            <Dependent Role="NSGEmployee">
+              <PropertyRef Name="QuarterTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreRank_EntryUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.CoreRank" Role="CoreRank" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreRank">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreRank_UpdateUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="0..1" />
+          <End Type="NSGTransportManagementModel.CoreRank" Role="CoreRank" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreRank">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGEmployee_RankID_CoreRank_RankID">
+          <End Type="NSGTransportManagementModel.CoreRank" Role="CoreRank" Multiplicity="0..1" />
+          <End Type="NSGTransportManagementModel.NSGEmployee" Role="NSGEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreRank">
+              <PropertyRef Name="RankID" />
+            </Principal>
+            <Dependent Role="NSGEmployee">
+              <PropertyRef Name="RankID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreRelationship_EntryUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.CoreRelationship" Role="CoreRelationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreRelationship">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreRelationship_UpdateUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="0..1" />
+          <End Type="NSGTransportManagementModel.CoreRelationship" Role="CoreRelationship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreRelationship">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreSchool_EntryUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.CoreSchool" Role="CoreSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreSchool">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreSchool_StateID_CoreState_StateID">
+          <End Type="NSGTransportManagementModel.CoreState" Role="CoreState" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.CoreSchool" Role="CoreSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreState">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="CoreSchool">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreSchool_UpdateUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="0..1" />
+          <End Type="NSGTransportManagementModel.CoreSchool" Role="CoreSchool" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreSchool">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreState_EntryUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.CoreState" Role="CoreState" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreState">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreState_UpdateUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="0..1" />
+          <End Type="NSGTransportManagementModel.CoreState" Role="CoreState" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreState">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreUnit_EntryUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.CoreUnit" Role="CoreUnit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreUnit">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreUnit_UpdateUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="0..1" />
+          <End Type="NSGTransportManagementModel.CoreUnit" Role="CoreUnit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreUnit">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGEmployee_UnitID_CoreUnit_UnitID">
+          <End Type="NSGTransportManagementModel.CoreUnit" Role="CoreUnit" Multiplicity="0..1" />
+          <End Type="NSGTransportManagementModel.NSGEmployee" Role="NSGEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUnit">
+              <PropertyRef Name="UnitID" />
+            </Principal>
+            <Dependent Role="NSGEmployee">
+              <PropertyRef Name="UnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGEmployee_EntryUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.NSGEmployee" Role="NSGEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="NSGEmployee">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGEmployee_UpdateUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="0..1" />
+          <End Type="NSGTransportManagementModel.NSGEmployee" Role="NSGEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="NSGEmployee">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGStudentDocument_EntryUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.NSGStudentDocument" Role="NSGStudentDocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="NSGStudentDocument">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGStudentDocument_UpdateUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="0..1" />
+          <End Type="NSGTransportManagementModel.NSGStudentDocument" Role="NSGStudentDocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="NSGStudentDocument">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="SchoolDetailsGet_Result">
+          <Property Type="Int64" Name="SchoolID" Nullable="false" />
+          <Property Type="String" Name="SchoolName" Nullable="false" MaxLength="250" />
+          <Property Type="Time" Name="WinterTimingFrom" Nullable="false" />
+          <Property Type="Time" Name="WinterTimingTo" Nullable="false" />
+          <Property Type="Time" Name="SummerTimingFrom" Nullable="false" />
+          <Property Type="Time" Name="SummerTimingTo" Nullable="false" />
+          <Property Type="Decimal" Name="DistanceFromGarage" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="String" Name="AdminContactNumbers" Nullable="false" MaxLength="1000" />
+          <Property Type="String" Name="SchoolAddress" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="StateName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CityName" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="BusRouteDetailsGet_Result">
+          <Property Type="Int64" Name="BusRouteID" Nullable="false" />
+          <Property Type="String" Name="RouteNo" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="RegistrationNumber" Nullable="true" MaxLength="25" />
+          <Property Type="Int32" Name="TotalSeatCount" Nullable="true" />
+          <Property Type="Int32" Name="MaxPassengerAllowed" Nullable="true" />
+          <Property Type="Int32" Name="KilometerRun" Nullable="true" />
+          <Property Type="String" Name="DriverName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="DriverContactNumber" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CoDriverName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CoDriverContactNumber" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="SchoolName" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="BusRouteSchoolsGet_Result">
+          <Property Type="Int64" Name="SchoolID" Nullable="false" />
+          <Property Type="String" Name="SchoolName" Nullable="false" MaxLength="353" />
+          <Property Type="Boolean" Name="Selected" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="CoreBusRouteDetail">
+          <Key>
+            <PropertyRef Name="BusRouteDetailID" />
+          </Key>
+          <Property Name="BusRouteDetailID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BusRouteID" Type="Int64" Nullable="false" />
+          <Property Name="BusStopNumber" Type="Int32" Nullable="false" />
+          <Property Name="BusStopName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PickUpTime" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DropTime" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="EntryUserID" Type="Int32" Nullable="false" />
+          <Property Name="EntryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUserID" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CoreBusRoute" Relationship="NSGTransportManagementModel.FK_CoreBusRouteDetail_BusRouteID_CoreBusRoute_BusRouteID" FromRole="CoreBusRouteDetail" ToRole="CoreBusRoute" />
+          <NavigationProperty Name="CoreUser" Relationship="NSGTransportManagementModel.FK_CoreBusRouteDetail_EntryUserID_CoreUser_CoreUserID" FromRole="CoreBusRouteDetail" ToRole="CoreUser" />
+          <NavigationProperty Name="CoreUser1" Relationship="NSGTransportManagementModel.FK_CoreBusRouteDetail_UpdateUserID_CoreUser_CoreUserID" FromRole="CoreBusRouteDetail" ToRole="CoreUser" />
+          <NavigationProperty Name="NSGStudents" Relationship="NSGTransportManagementModel.FK_NSGStudent_BusRouteDetailID_CoreBusRouteDetail_BusRouteDetailID" FromRole="CoreBusRouteDetail" ToRole="NSGStudent" />
+        </EntityType>
+        <Association Name="FK_CoreBusRouteDetail_BusRouteID_CoreBusRoute_BusRouteID">
+          <End Type="NSGTransportManagementModel.CoreBusRoute" Role="CoreBusRoute" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.CoreBusRouteDetail" Role="CoreBusRouteDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreBusRoute">
+              <PropertyRef Name="BusRouteID" />
+            </Principal>
+            <Dependent Role="CoreBusRouteDetail">
+              <PropertyRef Name="BusRouteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreBusRouteDetail_EntryUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.CoreBusRouteDetail" Role="CoreBusRouteDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreBusRouteDetail">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CoreBusRouteDetail_UpdateUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="0..1" />
+          <End Type="NSGTransportManagementModel.CoreBusRouteDetail" Role="CoreBusRouteDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="CoreBusRouteDetail">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="BusPickupPointsGet_Result">
+          <Property Type="Int64" Name="BusRouteID" Nullable="false" />
+          <Property Type="String" Name="PickupPoint" Nullable="true" MaxLength="533" />
+        </ComplexType>
+        <EntityType Name="NSGStudent">
+          <Key>
+            <PropertyRef Name="NSGStudentID" />
+          </Key>
+          <Property Name="NSGStudentID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Class" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SchoolID" Type="Int64" Nullable="false" />
+          <Property Name="BusRouteID" Type="Int64" Nullable="false" />
+          <Property Name="BusRouteDetailID" Type="Int64" Nullable="false" />
+          <Property Name="GuardianName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="RelationshipID" Type="Int32" Nullable="false" />
+          <Property Name="NSGEmployeeCode" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="RankID" Type="Int32" />
+          <Property Name="UnitID" Type="Int32" />
+          <Property Name="QuarterTypeID" Type="Int32" />
+          <Property Name="QuarterNumber" Type="Int32" />
+          <Property Name="IssueDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="PassHolderPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="EntryUserID" Type="Int32" Nullable="false" />
+          <Property Name="EntryDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateUserID" Type="Int32" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CoreBusRoute" Relationship="NSGTransportManagementModel.FK_NSGStudent_BusRouteID_CoreBusRoute_BusRouteID" FromRole="NSGStudent" ToRole="CoreBusRoute" />
+          <NavigationProperty Name="CoreBusRouteDetail" Relationship="NSGTransportManagementModel.FK_NSGStudent_BusRouteDetailID_CoreBusRouteDetail_BusRouteDetailID" FromRole="NSGStudent" ToRole="CoreBusRouteDetail" />
+          <NavigationProperty Name="CoreQuarterType" Relationship="NSGTransportManagementModel.FK_NSGStudent_QuarterTypeID_CoreQuarterType_QuarterTypeID" FromRole="NSGStudent" ToRole="CoreQuarterType" />
+          <NavigationProperty Name="CoreRank" Relationship="NSGTransportManagementModel.FK_NSGStudent_RankID_CoreRank_RankID" FromRole="NSGStudent" ToRole="CoreRank" />
+          <NavigationProperty Name="CoreRelationship" Relationship="NSGTransportManagementModel.FK_NSGStudent_RelationshipID_CoreRelationship_RelationshipID" FromRole="NSGStudent" ToRole="CoreRelationship" />
+          <NavigationProperty Name="CoreSchool" Relationship="NSGTransportManagementModel.FK_NSGStudent_SchoolID_CoreSchool_SchoolID" FromRole="NSGStudent" ToRole="CoreSchool" />
+          <NavigationProperty Name="CoreUnit" Relationship="NSGTransportManagementModel.FK_NSGStudent_UnitID_CoreUnit_UnitID" FromRole="NSGStudent" ToRole="CoreUnit" />
+          <NavigationProperty Name="CoreUser" Relationship="NSGTransportManagementModel.FK_NSGStudent_EntryUserID_CoreUser_CoreUserID" FromRole="NSGStudent" ToRole="CoreUser" />
+          <NavigationProperty Name="CoreUser1" Relationship="NSGTransportManagementModel.FK_NSGStudent_UpdateUserID_CoreUser_CoreUserID" FromRole="NSGStudent" ToRole="CoreUser" />
+          <NavigationProperty Name="NSGStudentDocuments" Relationship="NSGTransportManagementModel.FK_NSGStudentDocument_NSGStudentID_NSGStudent_NSGStudentID" FromRole="NSGStudent" ToRole="NSGStudentDocument" />
+        </EntityType>
+        <Association Name="FK_NSGStudent_BusRouteID_CoreBusRoute_BusRouteID">
+          <End Type="NSGTransportManagementModel.CoreBusRoute" Role="CoreBusRoute" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.NSGStudent" Role="NSGStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreBusRoute">
+              <PropertyRef Name="BusRouteID" />
+            </Principal>
+            <Dependent Role="NSGStudent">
+              <PropertyRef Name="BusRouteID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGStudent_BusRouteDetailID_CoreBusRouteDetail_BusRouteDetailID">
+          <End Type="NSGTransportManagementModel.CoreBusRouteDetail" Role="CoreBusRouteDetail" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.NSGStudent" Role="NSGStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreBusRouteDetail">
+              <PropertyRef Name="BusRouteDetailID" />
+            </Principal>
+            <Dependent Role="NSGStudent">
+              <PropertyRef Name="BusRouteDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGStudent_QuarterTypeID_CoreQuarterType_QuarterTypeID">
+          <End Type="NSGTransportManagementModel.CoreQuarterType" Role="CoreQuarterType" Multiplicity="0..1" />
+          <End Type="NSGTransportManagementModel.NSGStudent" Role="NSGStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreQuarterType">
+              <PropertyRef Name="QuarterTypeID" />
+            </Principal>
+            <Dependent Role="NSGStudent">
+              <PropertyRef Name="QuarterTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGStudent_RankID_CoreRank_RankID">
+          <End Type="NSGTransportManagementModel.CoreRank" Role="CoreRank" Multiplicity="0..1" />
+          <End Type="NSGTransportManagementModel.NSGStudent" Role="NSGStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreRank">
+              <PropertyRef Name="RankID" />
+            </Principal>
+            <Dependent Role="NSGStudent">
+              <PropertyRef Name="RankID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGStudent_RelationshipID_CoreRelationship_RelationshipID">
+          <End Type="NSGTransportManagementModel.CoreRelationship" Role="CoreRelationship" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.NSGStudent" Role="NSGStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreRelationship">
+              <PropertyRef Name="RelationshipID" />
+            </Principal>
+            <Dependent Role="NSGStudent">
+              <PropertyRef Name="RelationshipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGStudent_SchoolID_CoreSchool_SchoolID">
+          <End Type="NSGTransportManagementModel.CoreSchool" Role="CoreSchool" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.NSGStudent" Role="NSGStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreSchool">
+              <PropertyRef Name="SchoolID" />
+            </Principal>
+            <Dependent Role="NSGStudent">
+              <PropertyRef Name="SchoolID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGStudent_UnitID_CoreUnit_UnitID">
+          <End Type="NSGTransportManagementModel.CoreUnit" Role="CoreUnit" Multiplicity="0..1" />
+          <End Type="NSGTransportManagementModel.NSGStudent" Role="NSGStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUnit">
+              <PropertyRef Name="UnitID" />
+            </Principal>
+            <Dependent Role="NSGStudent">
+              <PropertyRef Name="UnitID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGStudent_EntryUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.NSGStudent" Role="NSGStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="NSGStudent">
+              <PropertyRef Name="EntryUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGStudent_UpdateUserID_CoreUser_CoreUserID">
+          <End Type="NSGTransportManagementModel.CoreUser" Role="CoreUser" Multiplicity="0..1" />
+          <End Type="NSGTransportManagementModel.NSGStudent" Role="NSGStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CoreUser">
+              <PropertyRef Name="CoreUserID" />
+            </Principal>
+            <Dependent Role="NSGStudent">
+              <PropertyRef Name="UpdateUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NSGStudentDocument_NSGStudentID_NSGStudent_NSGStudentID">
+          <End Type="NSGTransportManagementModel.NSGStudent" Role="NSGStudent" Multiplicity="1" />
+          <End Type="NSGTransportManagementModel.NSGStudentDocument" Role="NSGStudentDocument" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NSGStudent">
+              <PropertyRef Name="NSGStudentID" />
+            </Principal>
+            <Dependent Role="NSGStudentDocument">
+              <PropertyRef Name="NSGStudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="StudentPassDetailView">
+          <Key>
+            <PropertyRef Name="PassId" />
+            <PropertyRef Name="RegNo" />
+            <PropertyRef Name="GuardianName" />
+            <PropertyRef Name="UnitName" />
+            <PropertyRef Name="Class" />
+            <PropertyRef Name="SchoolName" />
+            <PropertyRef Name="BusStopName" />
+            <PropertyRef Name="IssueDate" />
+            <PropertyRef Name="MobileNo" />
+            <PropertyRef Name="RouteNo" />
+          </Key>
+          <Property Name="PassId" Type="Int64" Nullable="false" />
+          <Property Name="Term" Type="String" MaxLength="33" FixedLength="false" Unicode="false" />
+          <Property Name="RegNo" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="501" FixedLength="false" Unicode="false" />
+          <Property Name="GuardianName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UnitName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Class" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="SchoolName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="BusStopName" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IssueDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="MobileNo" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="PassHolderPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="RouteNo" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="BusDetailsGet_Result">
+          <Property Type="Int64" Name="BusID" Nullable="false" />
+          <Property Type="String" Name="RegistrationNumber" Nullable="false" MaxLength="25" />
+          <Property Type="String" Name="RouteNo" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="TotalSeatCount" Nullable="false" />
+          <Property Type="Int32" Name="MaxPassengerAllowed" Nullable="false" />
+          <Property Type="Int32" Name="KilometerRun" Nullable="false" />
+          <Property Type="String" Name="DriverName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="DriverContactNumber" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CoDriverName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CoDriverContactNumber" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="SchoolName" Nullable="true" MaxLength="250" />
+        </ComplexType>
+        <ComplexType Name="PassHolderDetailsGet_Result">
+          <Property Type="Int64" Name="NSGStudentID" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="GuardianName" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="Class" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="SchoolName" Nullable="false" MaxLength="456" />
+          <Property Type="String" Name="RouteNo" Nullable="false" MaxLength="10" />
+          <Property Type="String" Name="BusStopName" Nullable="false" MaxLength="500" />
+          <Property Type="DateTime" Name="IssueDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="ExpiryDate" Nullable="true" Precision="23" />
+          <Property Type="String" Name="IsActive" Nullable="false" MaxLength="3" />
+          <Property Type="String" Name="EntryBy" Nullable="true" MaxLength="501" />
+        </ComplexType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NSGTransportManagementModelStoreContainer" CdmEntityContainer="NSGTransportManagementEntities" >
+          <EntitySetMapping Name="CoreBus">
+            <EntityTypeMapping TypeName="NSGTransportManagementModel.CoreBus">
+              <MappingFragment StoreEntitySet="CoreBus">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EntryUserID" ColumnName="EntryUserID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="BusRouteID" ColumnName="BusRouteID" />
+                <ScalarProperty Name="CoDriverContactNumber" ColumnName="CoDriverContactNumber" />
+                <ScalarProperty Name="CoDriverName" ColumnName="CoDriverName" />
+                <ScalarProperty Name="DriverContactNumber" ColumnName="DriverContactNumber" />
+                <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+                <ScalarProperty Name="KilometerRun" ColumnName="KilometerRun" />
+                <ScalarProperty Name="MaxPassengerAllowed" ColumnName="MaxPassengerAllowed" />
+                <ScalarProperty Name="TotalSeatCount" ColumnName="TotalSeatCount" />
+                <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+                <ScalarProperty Name="BusID" ColumnName="BusID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreBusRoutes">
+            <EntityTypeMapping TypeName="NSGTransportManagementModel.CoreBusRoute">
+              <MappingFragment StoreEntitySet="CoreBusRoute">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EntryUserID" ColumnName="EntryUserID" />
+                <ScalarProperty Name="RouteNo" ColumnName="RouteNo" />
+                <ScalarProperty Name="BusRouteID" ColumnName="BusRouteID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreBusRouteSchools">
+            <EntityTypeMapping TypeName="NSGTransportManagementModel.CoreBusRouteSchool">
+              <MappingFragment StoreEntitySet="CoreBusRouteSchool">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EntryUserID" ColumnName="EntryUserID" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+                <ScalarProperty Name="BusRouteID" ColumnName="BusRouteID" />
+                <ScalarProperty Name="BusRouteSchoolID" ColumnName="BusRouteSchoolID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreCities">
+            <EntityTypeMapping TypeName="NSGTransportManagementModel.CoreCity">
+              <MappingFragment StoreEntitySet="CoreCity">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EntryUserID" ColumnName="EntryUserID" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreIdentityTypes">
+            <EntityTypeMapping TypeName="NSGTransportManagementModel.CoreIdentityType">
+              <MappingFragment StoreEntitySet="CoreIdentityType">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EntryUserID" ColumnName="EntryUserID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IdentityType" ColumnName="IdentityType" />
+                <ScalarProperty Name="IdentityTypeID" ColumnName="IdentityTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreQuarterTypes">
+            <EntityTypeMapping TypeName="NSGTransportManagementModel.CoreQuarterType">
+              <MappingFragment StoreEntitySet="CoreQuarterType">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EntryUserID" ColumnName="EntryUserID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="MaxQuarterNumber" ColumnName="MaxQuarterNumber" />
+                <ScalarProperty Name="QuarterTypeName" ColumnName="QuarterTypeName" />
+                <ScalarProperty Name="QuarterTypeID" ColumnName="QuarterTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreRanks">
+            <EntityTypeMapping TypeName="NSGTransportManagementModel.CoreRank">
+              <MappingFragment StoreEntitySet="CoreRank">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EntryUserID" ColumnName="EntryUserID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RankName" ColumnName="RankName" />
+                <ScalarProperty Name="RankID" ColumnName="RankID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreRelationships">
+            <EntityTypeMapping TypeName="NSGTransportManagementModel.CoreRelationship">
+              <MappingFragment StoreEntitySet="CoreRelationship">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EntryUserID" ColumnName="EntryUserID" />
+                <ScalarProperty Name="Relationship" ColumnName="Relationship" />
+                <ScalarProperty Name="RelationshipID" ColumnName="RelationshipID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreSchools">
+            <EntityTypeMapping TypeName="NSGTransportManagementModel.CoreSchool">
+              <MappingFragment StoreEntitySet="CoreSchool">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EntryUserID" ColumnName="EntryUserID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="AdminContactNumbers" ColumnName="AdminContactNumbers" />
+                <ScalarProperty Name="SchoolAddress" ColumnName="SchoolAddress" />
+                <ScalarProperty Name="DistanceFromGarage" ColumnName="DistanceFromGarage" />
+                <ScalarProperty Name="SummerTimingTo" ColumnName="SummerTimingTo" />
+                <ScalarProperty Name="SummerTimingFrom" ColumnName="SummerTimingFrom" />
+                <ScalarProperty Name="SummerTimingEnd" ColumnName="SummerTimingEnd" />
+                <ScalarProperty Name="SummerTimingStart" ColumnName="SummerTimingStart" />
+                <ScalarProperty Name="WinterTimingTo" ColumnName="WinterTimingTo" />
+                <ScalarProperty Name="WinterTimingFrom" ColumnName="WinterTimingFrom" />
+                <ScalarProperty Name="WinterTimingEnd" ColumnName="WinterTimingEnd" />
+                <ScalarProperty Name="WinterTimingStart" ColumnName="WinterTimingStart" />
+                <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreStates">
+            <EntityTypeMapping TypeName="NSGTransportManagementModel.CoreState">
+              <MappingFragment StoreEntitySet="CoreState">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EntryUserID" ColumnName="EntryUserID" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreUnits">
+            <EntityTypeMapping TypeName="NSGTransportManagementModel.CoreUnit">
+              <MappingFragment StoreEntitySet="CoreUnit">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EntryUserID" ColumnName="EntryUserID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CoreUsers">
+            <EntityTypeMapping TypeName="NSGTransportManagementModel.CoreUser">
+              <MappingFragment StoreEntitySet="CoreUser">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EntryUserID" ColumnName="EntryUserID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="CoreUserID" ColumnName="CoreUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ErrorLogs">
+            <EntityTypeMapping TypeName="NSGTransportManagementModel.ErrorLog">
+              <MappingFragment StoreEntitySet="ErrorLog">
+                <ScalarProperty Name="ErrorTime" ColumnName="ErrorTime" />
+                <ScalarProperty Name="ErrorMessage" ColumnName="ErrorMessage" />
+                <ScalarProperty Name="ErrorState" ColumnName="ErrorState" />
+                <ScalarProperty Name="ErrorSeverity" ColumnName="ErrorSeverity" />
+                <ScalarProperty Name="ErrorNumber" ColumnName="ErrorNumber" />
+                <ScalarProperty Name="SPName" ColumnName="SPName" />
+                <ScalarProperty Name="ErrorLogID" ColumnName="ErrorLogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NSGEmployees">
+            <EntityTypeMapping TypeName="NSGTransportManagementModel.NSGEmployee">
+              <MappingFragment StoreEntitySet="NSGEmployee">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EntryUserID" ColumnName="EntryUserID" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="QuarterNumber" ColumnName="QuarterNumber" />
+                <ScalarProperty Name="QuarterTypeID" ColumnName="QuarterTypeID" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="RankID" ColumnName="RankID" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="NSGEmployeeCode" ColumnName="NSGEmployeeCode" />
+                <ScalarProperty Name="NSGEmployeeID" ColumnName="NSGEmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NSGStudentDocuments">
+            <EntityTypeMapping TypeName="NSGTransportManagementModel.NSGStudentDocument">
+              <MappingFragment StoreEntitySet="NSGStudentDocument">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EntryUserID" ColumnName="EntryUserID" />
+                <ScalarProperty Name="DocumentPhoto" ColumnName="DocumentPhoto" />
+                <ScalarProperty Name="DocumentName" ColumnName="DocumentName" />
+                <ScalarProperty Name="NSGStudentID" ColumnName="NSGStudentID" />
+                <ScalarProperty Name="NSGStudentDocumentID" ColumnName="NSGStudentDocumentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SchoolDetailsGet" FunctionName="NSGTransportManagementModel.Store.SchoolDetailsGet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NSGTransportManagementModel.SchoolDetailsGet_Result">
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+                <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+                <ScalarProperty Name="WinterTimingFrom" ColumnName="WinterTimingFrom" />
+                <ScalarProperty Name="WinterTimingTo" ColumnName="WinterTimingTo" />
+                <ScalarProperty Name="SummerTimingFrom" ColumnName="SummerTimingFrom" />
+                <ScalarProperty Name="SummerTimingTo" ColumnName="SummerTimingTo" />
+                <ScalarProperty Name="DistanceFromGarage" ColumnName="DistanceFromGarage" />
+                <ScalarProperty Name="AdminContactNumbers" ColumnName="AdminContactNumbers" />
+                <ScalarProperty Name="SchoolAddress" ColumnName="SchoolAddress" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BusRouteDetailsGet" FunctionName="NSGTransportManagementModel.Store.BusRouteDetailsGet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NSGTransportManagementModel.BusRouteDetailsGet_Result">
+                <ScalarProperty Name="BusRouteID" ColumnName="BusRouteID" />
+                <ScalarProperty Name="RouteNo" ColumnName="RouteNo" />
+                <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+                <ScalarProperty Name="TotalSeatCount" ColumnName="TotalSeatCount" />
+                <ScalarProperty Name="MaxPassengerAllowed" ColumnName="MaxPassengerAllowed" />
+                <ScalarProperty Name="KilometerRun" ColumnName="KilometerRun" />
+                <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+                <ScalarProperty Name="DriverContactNumber" ColumnName="DriverContactNumber" />
+                <ScalarProperty Name="CoDriverName" ColumnName="CoDriverName" />
+                <ScalarProperty Name="CoDriverContactNumber" ColumnName="CoDriverContactNumber" />
+                <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="BusRouteSchoolsGet" FunctionName="NSGTransportManagementModel.Store.BusRouteSchoolsGet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NSGTransportManagementModel.BusRouteSchoolsGet_Result">
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+                <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+                <ScalarProperty Name="Selected" ColumnName="Selected" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="CoreBusRouteDetails">
+            <EntityTypeMapping TypeName="NSGTransportManagementModel.CoreBusRouteDetail">
+              <MappingFragment StoreEntitySet="CoreBusRouteDetail">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EntryUserID" ColumnName="EntryUserID" />
+                <ScalarProperty Name="DropTime" ColumnName="DropTime" />
+                <ScalarProperty Name="PickUpTime" ColumnName="PickUpTime" />
+                <ScalarProperty Name="BusStopName" ColumnName="BusStopName" />
+                <ScalarProperty Name="BusStopNumber" ColumnName="BusStopNumber" />
+                <ScalarProperty Name="BusRouteID" ColumnName="BusRouteID" />
+                <ScalarProperty Name="BusRouteDetailID" ColumnName="BusRouteDetailID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="BusPickupPointsGet" FunctionName="NSGTransportManagementModel.Store.BusPickupPointsGet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NSGTransportManagementModel.BusPickupPointsGet_Result">
+                <ScalarProperty Name="BusRouteID" ColumnName="BusRouteID" />
+                <ScalarProperty Name="PickupPoint" ColumnName="PickupPoint" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="NSGStudents">
+            <EntityTypeMapping TypeName="NSGTransportManagementModel.NSGStudent">
+              <MappingFragment StoreEntitySet="NSGStudent">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
+                <ScalarProperty Name="EntryDate" ColumnName="EntryDate" />
+                <ScalarProperty Name="EntryUserID" ColumnName="EntryUserID" />
+                <ScalarProperty Name="PassHolderPhoto" ColumnName="PassHolderPhoto" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+                <ScalarProperty Name="QuarterNumber" ColumnName="QuarterNumber" />
+                <ScalarProperty Name="QuarterTypeID" ColumnName="QuarterTypeID" />
+                <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+                <ScalarProperty Name="RankID" ColumnName="RankID" />
+                <ScalarProperty Name="NSGEmployeeCode" ColumnName="NSGEmployeeCode" />
+                <ScalarProperty Name="RelationshipID" ColumnName="RelationshipID" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="GuardianName" ColumnName="GuardianName" />
+                <ScalarProperty Name="BusRouteDetailID" ColumnName="BusRouteDetailID" />
+                <ScalarProperty Name="BusRouteID" ColumnName="BusRouteID" />
+                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="NSGStudentID" ColumnName="NSGStudentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentPassDetailViews">
+            <EntityTypeMapping TypeName="NSGTransportManagementModel.StudentPassDetailView">
+              <MappingFragment StoreEntitySet="StudentPassDetailView">
+                <ScalarProperty Name="RouteNo" ColumnName="RouteNo" />
+                <ScalarProperty Name="PassHolderPhoto" ColumnName="PassHolderPhoto" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+                <ScalarProperty Name="BusStopName" ColumnName="BusStopName" />
+                <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="GuardianName" ColumnName="GuardianName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="RegNo" ColumnName="RegNo" />
+                <ScalarProperty Name="Term" ColumnName="Term" />
+                <ScalarProperty Name="PassId" ColumnName="PassId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="BusDetailsGet" FunctionName="NSGTransportManagementModel.Store.BusDetailsGet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NSGTransportManagementModel.BusDetailsGet_Result">
+                <ScalarProperty Name="BusID" ColumnName="BusID" />
+                <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+                <ScalarProperty Name="RouteNo" ColumnName="RouteNo" />
+                <ScalarProperty Name="TotalSeatCount" ColumnName="TotalSeatCount" />
+                <ScalarProperty Name="MaxPassengerAllowed" ColumnName="MaxPassengerAllowed" />
+                <ScalarProperty Name="KilometerRun" ColumnName="KilometerRun" />
+                <ScalarProperty Name="DriverName" ColumnName="DriverName" />
+                <ScalarProperty Name="DriverContactNumber" ColumnName="DriverContactNumber" />
+                <ScalarProperty Name="CoDriverName" ColumnName="CoDriverName" />
+                <ScalarProperty Name="CoDriverContactNumber" ColumnName="CoDriverContactNumber" />
+                <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PassHolderDetailsGet" FunctionName="NSGTransportManagementModel.Store.PassHolderDetailsGet">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NSGTransportManagementModel.PassHolderDetailsGet_Result">
+                <ScalarProperty Name="NSGStudentID" ColumnName="NSGStudentID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="GuardianName" ColumnName="GuardianName" />
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+                <ScalarProperty Name="RouteNo" ColumnName="RouteNo" />
+                <ScalarProperty Name="BusStopName" ColumnName="BusStopName" />
+                <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

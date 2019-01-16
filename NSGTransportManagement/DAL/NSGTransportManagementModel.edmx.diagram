@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0b8f8f7c1f99432dacdb09fa6bdc3e85" Name="Diagram1" >
+        <EntityTypeShape EntityType="NSGTransportManagementModel.CoreBus" Width="1.5" PointX="8.25" PointY="25.375" />
+        <EntityTypeShape EntityType="NSGTransportManagementModel.CoreBusRoute" Width="1.5" PointX="3" PointY="15" />
+        <EntityTypeShape EntityType="NSGTransportManagementModel.CoreBusRouteSchool" Width="1.5" PointX="5.25" PointY="22" />
+        <EntityTypeShape EntityType="NSGTransportManagementModel.CoreCity" Width="1.5" PointX="5.25" PointY="26.75" />
+        <EntityTypeShape EntityType="NSGTransportManagementModel.CoreIdentityType" Width="1.5" PointX="3" PointY="18.875" />
+        <EntityTypeShape EntityType="NSGTransportManagementModel.CoreQuarterType" Width="1.5" PointX="3" PointY="31.25" />
+        <EntityTypeShape EntityType="NSGTransportManagementModel.CoreRank" Width="1.5" PointX="3" PointY="42.5" />
+        <EntityTypeShape EntityType="NSGTransportManagementModel.CoreRelationship" Width="1.5" PointX="3" PointY="39.25" />
+        <EntityTypeShape EntityType="NSGTransportManagementModel.CoreSchool" Width="1.5" PointX="10.5" PointY="24.375" />
+        <EntityTypeShape EntityType="NSGTransportManagementModel.CoreState" Width="1.5" PointX="3" PointY="22.375" />
+        <EntityTypeShape EntityType="NSGTransportManagementModel.CoreUnit" Width="1.5" PointX="3" PointY="46.5" />
+        <EntityTypeShape EntityType="NSGTransportManagementModel.CoreUser" Width="1.5" PointX="0.75" PointY="23.25" />
+        <EntityTypeShape EntityType="NSGTransportManagementModel.ErrorLog" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="NSGTransportManagementModel.NSGEmployee" Width="1.5" PointX="5.25" PointY="34.125" />
+        <EntityTypeShape EntityType="NSGTransportManagementModel.NSGStudentDocument" Width="1.5" PointX="10.5" PointY="31.125" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreBus_BusRouteID_CoreBusRoute_BusRouteID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreBus_EntryUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreBus_UpdateUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreBusRoute_EntryUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreBusRoute_UpdateUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreBusRouteSchool_BusRouteID_CoreBusRoute_BusRouteID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreBusRouteSchool_EntryUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreBusRouteSchool_SchoolID_CoreSchool_SchoolID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreBusRouteSchool_UpdateUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreCity_EntryUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreCity_StateID_CoreState_StateID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreCity_UpdateUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreSchool_CityID_CoreCity_CityID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_IdentityType_EntryUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_IdentityType_UpdateUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreQuarterType_EntryUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreQuarterType_UpdateUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_NSGEmployee_QuarterTypeID_CoreQuarterType_QuarterTypeID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreRank_EntryUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreRank_UpdateUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_NSGEmployee_RankID_CoreRank_RankID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreRelationship_EntryUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreRelationship_UpdateUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreSchool_EntryUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreSchool_StateID_CoreState_StateID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreSchool_UpdateUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreState_EntryUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreState_UpdateUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreUnit_EntryUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreUnit_UpdateUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_NSGEmployee_UnitID_CoreUnit_UnitID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_NSGEmployee_EntryUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_NSGEmployee_UpdateUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_NSGStudentDocument_EntryUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_NSGStudentDocument_UpdateUserID_CoreUser_CoreUserID" />
+        <EntityTypeShape EntityType="NSGTransportManagementModel.CoreBusRouteDetail" Width="1.5" PointX="8.25" PointY="20.875" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreBusRouteDetail_BusRouteID_CoreBusRoute_BusRouteID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreBusRouteDetail_EntryUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_CoreBusRouteDetail_UpdateUserID_CoreUser_CoreUserID" />
+        <EntityTypeShape EntityType="NSGTransportManagementModel.NSGStudent" Width="1.5" PointX="12.75" PointY="28.5" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_NSGStudent_BusRouteID_CoreBusRoute_BusRouteID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_NSGStudent_BusRouteDetailID_CoreBusRouteDetail_BusRouteDetailID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_NSGStudent_QuarterTypeID_CoreQuarterType_QuarterTypeID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_NSGStudent_RankID_CoreRank_RankID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_NSGStudent_RelationshipID_CoreRelationship_RelationshipID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_NSGStudent_SchoolID_CoreSchool_SchoolID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_NSGStudent_UnitID_CoreUnit_UnitID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_NSGStudent_EntryUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_NSGStudent_UpdateUserID_CoreUser_CoreUserID" />
+        <AssociationConnector Association="NSGTransportManagementModel.FK_NSGStudentDocument_NSGStudentID_NSGStudent_NSGStudentID" />
+        <EntityTypeShape EntityType="NSGTransportManagementModel.StudentPassDetailView" Width="1.5" PointX="3.375" PointY="0.75" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
